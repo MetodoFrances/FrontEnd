@@ -8,6 +8,8 @@ import './assets/main.css'
 
 const app = createApp(App)
 
+// Develop content
+
 app.use(createPinia())
 app.use(router)
 
