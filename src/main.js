@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 
 import App from './App.vue'
 import router from './router'
-import Navbar from "@/components/Navbar.vue";
+import Navbar_fake from "@/components/Navbar_fake.vue";
 
 //PrimeVue
 import PrimeVue from "primevue/config";
@@ -26,7 +26,7 @@ app.use(router)
 
 app.component('Button',Button)
 app.component('Password',Password)
-app.component('Navbar',Navbar)
+app.component('Navbar_fake',Navbar_fake)
 app.component('TieredMenu',TieredMenu)
 
 app.mount('#app')

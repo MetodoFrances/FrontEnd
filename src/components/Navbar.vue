@@ -1,59 +1,125 @@
 <template>
-  <div class="nav">
+  <header>
+    <div id="nav">
+      <ul class="sections-top">
+        <li class="menu-item" v-for="link in linksTop" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item' + link.id">
+          <RouterLink :to="link.path" class="no-underline" >
+            <a href="#" class="menu-link" :class="link.id === selectedIndex ? 'active': null">
+              <i class="menu-icon" :class="link.icon"></i>
+              <span>{{link.text}}</span>
+            </a>
+          </RouterLink>
+        </li>
 
-    <TieredMenu :model="sections" >
+      <ul class="sections-bottom">
+        <li class="menu-item" v-for="link in linksBottom" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item' + link.id">
+          <RouterLink :to="link.path" class="no-underline" >
+            <a href="#" class="menu-link" :class="link.id === selectedIndex ? 'active': null">
+              <i class="menu-icon" :class="link.icon"></i>
+              <span>{{link.text}}</span>
+            </a>
+          </RouterLink>
+        </li>
+      </ul>
 
-    </TieredMenu>
-  </div>
+
+      </ul>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      sections: [
+      name: "",
+      sliderPosition:0,
+      selectedElementWidth:0,
+      selectedIndex:0,
+      linksTop:[
         {
-          label:'Inicio',
-          link:'/',
-          icon:'pi pi-fw pi-home'
+          id:1,
+          icon:'pi pi-fw pi-home',
+          text: " Inicio",
+          path: '/',
         },
         {
-          label:'Leasing',
-          link:'/',
+          id:2,
+          text: " Leasing",
+          path: '/',
           icon:'pi pi-fw pi-money-bill',
         },
         {
-          label:'Reportes',
-          link:'/',
+          id:3,
+          text: " Reportes",
+          path: '/',
           icon:'pi pi-fw pi-file',
         },
         {
-          label:'Configuración',
-          link:'/',
+          id:4,
+          text: "Configuración",
+          path: '/',
           icon:'pi pi-fw pi-wrench',
         },
+      ],
+      linksBottom:[
         {
-          separator:true
-        },
-        {
-          label:'Salir',
-          link:'/',
-          icon:'pi pi-fw pi-power-off'
+          id:1,
+          text: "Salir",
+          path: '/',
+          icon:'pi pi-fw pi-power-off',
         }
-      ]
-    }
-  }
+      ],
+    };
+
+  },
 }
 </script>
 
 <style scoped>
-.p-tieredmenu {
-  padding: 0.25rem 0;
-  background: #FB8C00;
-  color: #495057;
-  border: 1px solid #dee2e6;
-  border-radius: 3px;
-  width: 325px;
-  height: 1006px;
+*{
+  margin:0;
+  padding:0;
 }
+#nav{
+  position:fixed;
+  width: 330px;
+  height:100%;
+  background:#FB8C00;
+  top:0;
+  left:0;
+}
+.sections-top{
+  width: 350px;
+}
+.sections-bottom {
+  top: 500px;
+}
+
+/* li - ok*/
+.menu-item{
+  top:100px;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* a - ok*/
+.menu-link{
+  padding:21px;
+  width: 142px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  color: black;
+  text-decoration: none;
+}
+
+.menu-link:hover, .menu-link.active{
+  color: #FB8C00 ;
+  background-color: #625c5c;
+  width: 330px;
+}
+
 </style>
