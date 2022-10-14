@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-
+//import { createPinia } from 'pinia'
 import App from './App.vue'
+
 import router from './router'
 import Navbar_fake from "@/components/Navbar_fake.vue";
 
@@ -18,11 +18,23 @@ import 'primeicons/primeicons.css'                           //icons
 
 import './assets/main.css'
 
+import PrimeVue from 'primevue/config';
+import router from './router';
+import 'primeicons/primeicons.css';
+
+
 
 const app = createApp(App)
 
+
 app.use(PrimeVue)
 app.use(router)
+
+// Develop content
+app.use(PrimeVue);
+app.use(router);
+//app.use(createPinia());
+
 
 app.component('Button',Button)
 app.component('Password',Password)
