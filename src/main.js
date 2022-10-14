@@ -3,7 +3,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 import router from './router'
-import Navbar_fake from "@/components/Navbar_fake.vue";
 
 //PrimeVue
 import PrimeVue from "primevue/config";
@@ -16,12 +15,7 @@ import 'primevue/resources/primevue.min.css'                 //core css
 import 'primeicons/primeicons.css'                           //icons
 
 
-import './assets/main.css'
-
-import PrimeVue from 'primevue/config';
-import router from './router';
 import 'primeicons/primeicons.css';
-
 
 
 const app = createApp(App)
@@ -38,7 +32,6 @@ app.use(router);
 
 app.component('Button',Button)
 app.component('Password',Password)
-app.component('Navbar_fake',Navbar_fake)
 app.component('TieredMenu',TieredMenu)
 
 app.mount('#app')

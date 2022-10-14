@@ -41,7 +41,7 @@ export default {
           id:1,
           icon:'pi pi-fw pi-home',
           text: " Inicio",
-          path: '/',
+          path: '/home',
         },
         {
           id:2,
