@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>{{ msg }}</h1> <!-- Esta es una forma de usar las variables (interpolation) -->
 </template>
 
 <script>
@@ -9,12 +9,13 @@ export default {
     name: "FeatureNameComponent",
     data() {
         return {
+            // Aquí declaran sus variables
             msg: "This is an sample component"
         }
     },
     created() {
-        service = new FeatureNameService()
-        console.log(service.doSomeStuff())
+        service = new FeatureNameService()// Instanciamos el servicio
+        console.log(service.doSomeStuff()) // Ejecutamos un método del servicio
     }
 }
 </script>
