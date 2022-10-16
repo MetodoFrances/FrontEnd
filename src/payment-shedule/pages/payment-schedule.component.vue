@@ -1,5 +1,12 @@
 <template>
-  <p>XDDD</p>
+  <pv-datatable :value="paymentSchedule" responsiveLayout="scroll" :paginator="true" :rows="8" :scrollable="true" editMode="cell" @cell-edit-complete="onCellEditComplete">
+    <pv-column field="graceType" header="Grace Type">
+      <template #editor="{ data, field }">
+        <pv-input-text v-model="data[field]" autofocus />
+      </template>
+    </pv-column>
+    <pv-column v-for="col in columns" :field="col.field" :header="col.header" :key="col.field"></pv-column>
+  </pv-datatable>
 </template>
 
 <script>
@@ -27,6 +34,26 @@ export default {
       depreciation: null,
       // Recompra
       buyback: null,
+      // Columnas
+      columns: [
+        { field: 'period', header: 'Period' },
+        { field: 'initialBalance', header: 'Initial Balance' },
+        { field: 'interest', header: 'Interest' },
+        { field: 'fixedFee', header: 'Fixed Fee' },
+        { field: 'amortization', header: 'Amortization' },
+        { field: 'riskInsurance', header: 'Risk Insurance' },
+        { field: 'periodicComission', header: 'Periodic Comission' },
+        { field: 'buyback', header: 'Buyback' },
+        { field: 'endingBalance', header: 'Ending Balance' },
+        { field: 'depreciation', header: 'Depreciation' },
+        { field: 'taxSavings',  header: 'Tax Savings' },
+        { field: 'IGVFee', header: 'IGV Fee' },
+        { field: 'grossCashFlow', header: 'Gross Cash Flow' },
+        { field: 'cashFlowWithIGV', header: 'Cash Flow With IGV' },
+        { field: 'netCashFlow', header: 'Net Cash Flow' },
+        { field: 'TCEAFlow', header: 'TCEA Flow' }
+      ],
+      editingRows : []
     }
   },
   props: {
@@ -65,6 +92,8 @@ export default {
       const TCEAflow = leasing.fixedFee;
       leasing.endingBalance = (graceType === "Total")? leasing.initialBalance + interest: leasing.initialBalance - amortization;
       if(leasing.endingBalance < 1.00) leasing.endingBalance = 0.00;
+      obj.graceType = graceType;
+      obj.period = leasing.currentPeriod;
       obj.initialBalance = leasing.initialBalance;
       obj.interest = interest;
       obj.fixedFee = leasing.fixedFee;
@@ -90,6 +119,12 @@ export default {
     validateTypeOfGracePeriod(arr,leasing) {
       for(leasing.currentPeriod; leasing.currentPeriod <= this.graceTypePeriods; ++leasing.currentPeriod)
         this.calculatePaymentSchedule(arr,leasing,this.graceType);
+    },
+    onCellEditComplete(e) {
+      console.log(e.data);
+    },
+    PaymentScheduleReCalculation() {
+      
     }
   },
   computed: {
@@ -105,7 +140,7 @@ export default {
       }
       this.validateTypeOfGracePeriod(arr,leasing);
       for(leasing.currentPeriod; leasing.currentPeriod <= this.totalInstallments; ++leasing.currentPeriod)
-        this.calculatePaymentSchedule(arr,leasing,"N");
+        this.calculatePaymentSchedule(arr,leasing,"None");
       return arr;
     }
   },

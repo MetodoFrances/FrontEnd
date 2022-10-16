@@ -1,6 +1,6 @@
 
 <template>
-  <div class="container">
+  <div>
     <PaymentScheduleComponent
     :initialCosts="initialCosts"
     :periodicCosts="periodicCosts"
@@ -30,22 +30,11 @@ export default {
       periodicCosts: new PeriodicCosts(10.00,0.0030),
       loanDetails: new LoanDetails(11800,3,30,0.12,0.01,0.25),
       opportunityCosts: new OpportunityCosts(),
-      graceType: "None",
-      graceTypePeriods: 0
+      graceType: "Total",
+      graceTypePeriods: 5
     }
   }
 }
 </script>
 <style>
-html {
-  font-size: 62.5%;
-  box-sizing: border-box;
-}
-*, *::after, **::before {
-  box-sizing: inherit;
-}
-.container {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-}
 </style>
