@@ -10,6 +10,7 @@
             </a>
           </RouterLink>
         </li>
+      </ul>
 
       <ul class="sections-bottom">
         <li class="menu-item" v-for="link in linksBottom" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item' + link.id">
@@ -22,8 +23,6 @@
         </li>
       </ul>
 
-
-      </ul>
     </div>
   </header>
 </template>
@@ -80,6 +79,8 @@ export default {
 *{
   margin:0;
   padding:0;
+
+  text-decoration: none;
 }
 #nav{
   position:fixed;
@@ -91,9 +92,10 @@ export default {
 }
 .sections-top{
   width: 350px;
+  margin-top: 50px;
 }
 .sections-bottom {
-  top: 500px;
+  margin-top: 600px;
 }
 
 /* li - ok*/
