@@ -1,5 +1,5 @@
 export class FeatureNameService {
-    doSomeStuff() {
-        return "doing something";
-    }
+  doSomeStuff() {
+    return "doing something";
+  }
 }

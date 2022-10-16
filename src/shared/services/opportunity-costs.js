@@ -1,5 +1,3 @@
 export class OpportunityCosts {
-    constructor() {
-        
-    }
+  constructor() {}
 }

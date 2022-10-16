@@ -1,5 +1,3 @@
 export class PaymentScheduleApiService {
-    createLeasingResults() {
-        
-    }
+  createLeasingResults() {}
 }
