@@ -1,14 +1,13 @@
 <template>
-  <p>{{msg}}</p>
+  <ConfigurationComponent></ConfigurationComponent>
 </template>
 
 <script>
+import ConfigurationComponent from "./configuration/pages/configuration.component.vue"
 export default {
-  data() {
-    return {
-      msg: "This is an empty app component"
-    }
-  }
+  name:"App",
+  components:{ConfigurationComponent}
+  
 }
 </script>
 
