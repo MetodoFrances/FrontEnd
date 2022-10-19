@@ -25,12 +25,8 @@
     </select>
     </div>
 
-    <div>
-        <h3>Notificaciones:</h3>
-    <select >
-      <option>Activado</option>
-      <option>Desactivado</option>
-    </select>
+    <div class="empty">
+        
     </div>
 
     <div>
@@ -66,6 +62,10 @@
    select{
     width: 100%;
     padding: 10px;
+   }
+
+   .empty{
+    padding: 40px;
    }
   
   </style>
