@@ -1,26 +1,27 @@
 <template>
-  <div>
-    <PaymentScheduleComponent
+    <PaymentScheduleComponent></PaymentScheduleComponent>
+    <PaymentScheduleDataTableComponent
       :initialCosts="initialCosts"
       :periodicCosts="periodicCosts"
       :loanDetails="loanDetails"
       :opportunityCosts="opportunityCosts"
       :graceType="graceType"
       :graceTypePeriods="graceTypePeriods"
-    ></PaymentScheduleComponent>
-  </div>
+    ></PaymentScheduleDataTableComponent>
 </template>
 <script>
 import { InitialCosts } from "./shared/services/inital-costs.js";
 import { LoanDetails } from "./shared/services/loan-details.js";
 import { OpportunityCosts } from "./shared/services/opportunity-costs";
 import { PeriodicCosts } from "./shared/services/periodic-costs.js";
+import PaymentScheduleDataTableComponent from "./payment-shedule/pages/payment-schedule-data-table.component.vue";
 import PaymentScheduleComponent from "./payment-shedule/pages/payment-schedule.component.vue";
 
 export default {
   name: "App",
   components: {
-    PaymentScheduleComponent,
+    PaymentScheduleDataTableComponent,
+    PaymentScheduleComponent
   },
   data() {
     return {
@@ -29,8 +30,8 @@ export default {
       periodicCosts: new PeriodicCosts(10.0, 0.003),
       loanDetails: new LoanDetails(11800, 3, 30, 0.12, 0.01, 0.25),
       opportunityCosts: new OpportunityCosts(),
-      graceType: "Total",
-      graceTypePeriods: 5,
+      graceType: "None",
+      graceTypePeriods: 0,
     };
   },
 };

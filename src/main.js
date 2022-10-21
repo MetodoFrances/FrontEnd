@@ -8,6 +8,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Row from "primevue/row";
 import InputText from "primevue/inputtext";
+import Button from "primevue/button";
 
 import "primevue/resources/themes/saga-blue/theme.css"; //theme
 import "primevue/resources/primevue.min.css"; //core css
@@ -24,5 +25,6 @@ app.component("pv-datatable", DataTable);
 app.component("pv-column", Column);
 app.component("pv-row", Row);
 app.component("pv-input-text", InputText);
+app.component("pv-button",Button);
 
 app.mount("#app");
