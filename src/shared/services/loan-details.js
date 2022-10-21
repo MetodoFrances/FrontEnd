@@ -20,7 +20,7 @@ export class LoanDetails {
     // Porcentaje IGV
     this.IGVpercentage = 0.18;
     // Porcentaje impuesto a la renta
-    this.incomeTaxPercentage = 0.3;
+    this.incomeTaxPercentage = 0.30;
     // Porcentaje recompra
     this.buyBackPercentage = buyBackPercentage;
     // Porcentaje tasa Nominal

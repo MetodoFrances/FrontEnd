@@ -118,7 +118,7 @@ export default {
       const taxSavings =
         (interest +
           this.riskInsurance +
-          this.initialCosts.periodicCommission +
+          this.periodicCosts.periodicCommission +
           this.depreciation) *
         this.loanDetails.incomeTaxPercentage;
       const BuyBack =
