@@ -97,7 +97,25 @@
   </template>
   
   <script>
- 
+  import { InitialCosts } from "../../shared/services/InitialCosts.js";
+  export default {
+    name: "payment-results",
+    data() {
+      return {
+        initialCosts: new InitialCosts(),
+        loanDetails: null,
+        periodicCommission: null
+
+      }
+    },
+    mounted() {
+      /*this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission) => {
+        this.initialCosts = initialCosts;
+        this.loanDetails = loanDetails;
+        this.periodicCommission = periodicCommission;
+      });*/
+    }
+  }
 
   </script>
   
