@@ -5,4 +5,8 @@ export class PeriodicCosts {
     // Porcentaje de seguro riesgo
     this.riskInsurancePercentage = riskInsurancePercentage;
   }
+  parseFloatAll() {
+    this.periodicCommission = parseFloat(this.periodicCommission);
+    this.riskInsurancePercentage = parseFloat(this.riskInsurancePercentage);
+  }
 }

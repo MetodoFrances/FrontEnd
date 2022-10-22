@@ -17,4 +17,11 @@ export class InitialCosts {
     // Comisión de activación
     this.activationFee = activationFee;
   }
+  parseFloatAll() {
+    this.registrationCosts = parseFloat(this.registrationCosts);
+    this.notarialCosts = parseFloat(this.notarialCosts);
+    this.appraisal = parseFloat(this.appraisal);
+    this.studyCommission = parseFloat(this.studyCommission);
+    this.activationFee = parseFloat(this.activationFee);
+  }
 }

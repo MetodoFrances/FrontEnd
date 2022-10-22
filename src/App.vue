@@ -1,13 +1,5 @@
 <template>
     <PaymentScheduleComponent></PaymentScheduleComponent>
-    <PaymentScheduleDataTableComponent
-      :initialCosts="initialCosts"
-      :periodicCosts="periodicCosts"
-      :loanDetails="loanDetails"
-      :opportunityCosts="opportunityCosts"
-      :graceType="graceType"
-      :graceTypePeriods="graceTypePeriods"
-    ></PaymentScheduleDataTableComponent>
 </template>
 <script>
 import { InitialCosts } from "./shared/services/inital-costs.js";

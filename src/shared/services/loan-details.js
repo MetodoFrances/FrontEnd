@@ -28,4 +28,11 @@ export class LoanDetails {
     // Valor de venta del activo
     this.saleValue = 0.0;
   }
+  parseFloatAll() {
+    this.salePrice = parseFloat(this.salePrice);
+    this.years = parseFloat(this.years);
+    this.paymentFrecuencyInDays = parseFloat(this.paymentFrecuencyInDays);
+    this.TEApercentage = parseFloat(this.TEApercentage);
+    this.buyBackPercentage = parseFloat(this.buyBackPercentage);
+  }
 }

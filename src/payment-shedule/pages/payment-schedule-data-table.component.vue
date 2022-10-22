@@ -180,7 +180,9 @@ export default {
     onCellEditComplete(e) {
       console.log(e.data);
     },
-    PaymentScheduleReCalculation() {},
+    PaymentScheduleReCalculation() {
+      
+    },
   },
   computed: {
     // Cronograma de pagos
@@ -208,6 +210,9 @@ export default {
   mounted() {
     console.log(this.paymentSchedule);
   },
+  created() {
+    console.log(this.initialCosts, this.loanDetails,this.periodicCosts, this.graceType, this.graceTypePeriods);
+  }
 };
 </script>
 

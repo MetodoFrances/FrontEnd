@@ -15,6 +15,7 @@
         <pv-input-text type="number" v-model="initialCosts.registrationCosts" placeholder="Registration costs" min="1" step="0.05"></pv-input-text>
         <pv-input-text type="number" v-model="initialCosts.appraisal" placeholder="Appraisal" min="1" step="0.05"></pv-input-text>
         <pv-input-text type="number" v-model="initialCosts.studyCommission" placeholder="Study commission" min="1" step="0.05"></pv-input-text>
+        <pv-input-text type="number" v-model="initialCosts.activationFee" placeholder="Activacion Fee" min="1" step="0.05"></pv-input-text>
     </div>
     <div class="inputsContainer p-input-filled third">
         <pv-input-text type="number" v-model="periodicCosts.periodicCommission" placeholder="Periodic Commission" min="0.05" step="0.05"></pv-input-text>
@@ -23,8 +24,18 @@
   </div>
   <div class="ps-buttons">
     <pv-button label="Get Payment Schedule" icon="pi pi-table" class="p-button-raised p-button-rounded p-button-warning" @click="getPaymentSchedule"/>
-    <pv-button label="Get Leasing Results" icon="pi pi-caret-right" class="p-button-raised p-button-rounded p-button-warning"/>
+    <pv-button label="Get Leasing Results" icon="pi pi-caret-right" class="p-button-raised p-button-rounded p-button-warning" @click="setLeasingResults"/>
     <pv-button label="Save Leasing" icon="pi pi-save" class="p-button-raised p-button-rounded p-button-warning" @click="saveLeasing"/>
+  </div>
+  <div class="ps-data-table" v-if="displayable">
+    <PaymentScheduleDataTableComponent
+      :initialCosts="initialCosts"
+      :periodicCosts="periodicCosts"
+      :loanDetails="loanDetails"
+      :opportunityCosts="opportunityCosts"
+      :graceType="graceType"
+      :graceTypePeriods="graceTypePeriods"
+    ></PaymentScheduleDataTableComponent>
   </div>
 </template>
 
@@ -48,16 +59,27 @@ export default {
             loanDetails: new LoanDetails(null, null, null, null, null, null),
             opportunityCosts: new OpportunityCosts(),
             graceType: "None",
-            graceTypePeriods: 0
+            graceTypePeriods: 0,
+            displayable: false
         }
     },
     methods: {
         getPaymentSchedule() {
-            console.log("Creating payment schedule");
+            this.displayable = false;
+            this.initialCosts.parseFloatAll();
+            this.periodicCosts.parseFloatAll();
+            this.loanDetails.parseFloatAll();
+            this.displayable = true;
         },
         saveLeasing() {
 
+        },
+        setLeasingResults() {
+            this.$root.$emit('receive-leasing-data',this.initialCosts, this.periodicCosts, this.loanDetails);
         }
+    },
+    created() {
+        
     }
 }
 </script>
@@ -105,5 +127,32 @@ export default {
 .third {
     grid-area: third;
     background-color: rgb(69, 236, 63);
+}
+@media (max-width: 700px) {
+    .first, .second, .third {
+        grid-area: unset;
+    }
+    .ps-container {
+        grid-template-areas: unset;
+        grid-template-rows: unset;
+        grid-template-columns: 100%;
+        column-gap: unset;
+        row-gap: unset;
+        row-gap: 3.5rem;
+    }
+    .first {
+        height: 30rem;
+    }
+    .second {
+        height: 20rem;
+    }
+    .third {
+        height: 15rem;
+    }
+    .ps-buttons {
+        height: 10rem;
+        flex-direction: column;
+        padding: 0 2rem;
+    }
 }
 </style>
