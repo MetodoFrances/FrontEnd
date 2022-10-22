@@ -1,17 +1,17 @@
 <template>
-  <p>{{msg}}</p>
+  <div>
+    <HistorialHome></HistorialHome>
+  </div>
+
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
+import HistorialHome from "./historial-reportes-home/pages/historial-home.vue";
 export default {
-  data() {
-    return {
-      msg: "This is an empty app component"
-    }
-  }
+    name: "App",
+    components: { HistorialHome }
 }
 </script>
-
-<style scoped>
-
-</style>

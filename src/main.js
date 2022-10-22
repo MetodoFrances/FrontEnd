@@ -1,13 +1,21 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import App from './App.vue'
-import PrimeVue from 'primevue/config';
-import 'primeicons/primeicons.css';
+import router from './router'
 
-const app = createApp(App)
+import PrimeVue from 'primevue/config'
+import TreeTable from 'primevue/treetable'
+import Column from 'primevue/column'
 
-// Develop content
+import 'primevue/resources/themes/saga-blue/theme.css'
+import 'primevue/resources/primevue.min.css'
+import 'primeicons/primeicons.css'
+
+
+const app = createApp(App);
+app.use(router);
 app.use(PrimeVue);
-app.use(createPinia())
+
+app.component('TreeTable', TreeTable);
+app.component('Column-p', Column);
 
 app.mount('#app')
