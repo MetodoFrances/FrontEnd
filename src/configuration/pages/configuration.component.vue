@@ -36,8 +36,25 @@
   </template>
   
   <script>
- 
-  
+  import { ConfigurationApiService } from "../service/configuration.service.js";
+  export default {
+    name: "configuration",
+    data() {
+      return {
+
+      }
+    },
+    created() {
+      const configurationApiService = new ConfigurationApiService();
+      configurationApiService.getLoans()
+      .then((response) =>  {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        
+      })
+    }
+  }
 
   </script>
   
