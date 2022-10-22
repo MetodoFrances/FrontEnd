@@ -25,11 +25,8 @@
     </select>
     </div>
 
-    <div class="empty">
-        
-    </div>
-
-    <div>
+    <div class="imagen_content">
+    
         <img src="/assets/image 13.png" alt="">
     </div>
 
@@ -52,6 +49,7 @@
    .container{
     display:flex;
     justify-content: center;
+  
    }
 
    h1{
@@ -64,9 +62,31 @@
     padding: 10px;
    }
 
-   .empty{
-    padding: 40px;
+   .imagen_content{
+    padding-top: 40px;
+    
    }
+
+   @media only screen
+  and (max-width: 600px){
+    
+    
+    .container{
+    display:block;
+    max-width: 100%;
+    }
+
+    img{
+      width: 100%;
+    }
+
+    select{
+    width: 100%;
+    padding: 10px 0;
+   }
+
+  }
+  
   
   </style>
   
