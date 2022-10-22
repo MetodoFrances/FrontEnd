@@ -1,9 +1,12 @@
 <template>
-    <div>
-        <TreeTable :value="nodes" :lazy="true" :paginator="true" :rows="rows" :loading="loading"
+    <div class="historial">
+        <h2 class="titulo-home"><b>HISTORIAL DE REPORTES</b></h2>
+        <div>
+            <TreeTable :value="nodes" :lazy="true" :paginator="true" :rows="rows" :loading="loading"
             @nodeExpand="onExpand" @page="onPage" :totalRecords="totalRecords">
-            <Column-p field="name" header="Historial de registros" :expander="true"></Column-p>
-        </TreeTable>
+            <Column-p field="name" header="Reportes" :expander="true"></Column-p>
+            </TreeTable>
+        </div>
     </div>
 </template>
 
@@ -24,7 +27,7 @@
         setTimeout(() => {
             this.loading = false;
             this.nodes = this.loadNodes(0, this.rows);
-            this.totalRecords = 5;
+            this.totalRecords = 10;
         }, 1000);
     },
     methods: {
@@ -97,5 +100,11 @@
 </script>
 
 <style focused>
-    
+    .titulo-home {
+        color: #fb8c00;
+    }
+    .historial {
+        width: 50%;
+        margin: auto;
+    }
 </style>

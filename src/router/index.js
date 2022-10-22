@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router"
-import Historial from '../pages/historial-home.vue'
+import Historial from '../historial-reportes-home/pages/historial-reportes-home.component.vue'
 
 const routes = [
     {

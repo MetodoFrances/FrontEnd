@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HistorialHome from "./historial-reportes-home/pages/historial-home.vue";
+import HistorialHome from "./historial-reportes-home/pages/historial-reportes-home.component.vue";
 export default {
     name: "App",
     components: { HistorialHome }
