@@ -17,7 +17,7 @@
           <RouterLink :to="link.path" class="no-underline" >
             <a href="#" class="menu-link" :class="link.id === selectedIndex ? 'active': null">
               <i class="menu-icon" :class="link.icon"></i>
-              <span>{{link.text}}</span>
+              <span class="link-exit">{{link.text}}</span>
             </a>
           </RouterLink>
         </li>
@@ -79,7 +79,6 @@ export default {
 *{
   margin:0;
   padding:0;
-
   text-decoration: none;
 }
 #nav{
@@ -90,13 +89,25 @@ export default {
   top:0;
   left:0;
 }
+
 .sections-top{
   width: 350px;
-  margin-top: 50px;
+  margin: 150px auto;
 }
 .sections-bottom {
-  margin-top: 600px;
+  margin: 350px auto;
 }
+
+@media screen and (max-height: 800px) {
+  .sections-top {
+    margin: 150px auto;
+  }
+  .sections-bottom {
+    margin: 150px auto;
+  }
+}
+
+
 
 /* li - ok*/
 .menu-item{
@@ -109,6 +120,7 @@ export default {
 
 /* a - ok*/
 .menu-link{
+  font-weight: bold;
   padding:21px;
   width: 142px;
   display: inline-flex;
@@ -117,11 +129,24 @@ export default {
   color: black;
   text-decoration: none;
 }
-
 .menu-link:hover, .menu-link.active{
-  color: #FB8C00 ;
+  color: white ;
   background-color: #625c5c;
   width: 330px;
 }
 
+.menu-icon{
+  font-weight: bold;
+  padding-right: 25px;
+}
+
+@media screen and (max-width: 880px) {
+  #nav{
+    width: 35%;
+  }
+  .menu-link:hover, .menu-link.active{
+    color: white ;
+    background: none;
+  }
+}
 </style>

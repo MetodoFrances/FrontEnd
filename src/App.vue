@@ -13,7 +13,7 @@ import Navbar from "@/shared/pages/Navbar.vue";
 export default {
   data() {
     return {
-      msg: "This is an empty app component"
+
     }
   }
 }
