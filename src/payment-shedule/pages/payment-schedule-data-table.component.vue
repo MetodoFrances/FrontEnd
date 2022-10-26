@@ -1,25 +1,30 @@
 <template>
   <div class="dataTable__container">
     <pv-datatable
-    :value="paymentSchedule"
-    responsiveLayout="scroll"
-    :paginator="true"
-    :rows="6"
-    :scrollable="true"
-    editMode="cell"
-    @cell-edit-complete="onCellEditComplete"
-  >
-    <pv-column field="graceType" header="Grace_Type">
-      <template #editor="{ data, field }">
-        <pv-input-text v-model="data[field]" autofocus />
-      </template>
-    </pv-column>
-    <pv-column v-for="col in columns" :field="col.field" :header="col.header" :key="col.field">
-      <template #body="slotprops">
-        <p class="column_centered">{{slotprops.data[col.field]}}</p>
-      </template>
-    </pv-column>
-  </pv-datatable>
+      :value="paymentSchedule"
+      responsiveLayout="scroll"
+      :paginator="true"
+      :rows="6"
+      :scrollable="true"
+      editMode="cell"
+      @cell-edit-complete="onCellEditComplete"
+    >
+      <pv-column field="graceType" header="Grace_Type">
+        <template #editor="{ data, field }">
+          <pv-input-text v-model="data[field]" autofocus />
+        </template>
+      </pv-column>
+      <pv-column
+        v-for="col in columns"
+        :field="col.field"
+        :header="col.header"
+        :key="col.field"
+      >
+        <template #body="slotprops">
+          <p class="column_centered">{{ slotprops.data[col.field] }}</p>
+        </template>
+      </pv-column>
+    </pv-datatable>
   </div>
 </template>
 
@@ -180,9 +185,7 @@ export default {
     onCellEditComplete(e) {
       console.log(e.data);
     },
-    PaymentScheduleReCalculation() {
-      
-    },
+    PaymentScheduleReCalculation() {},
   },
   computed: {
     // Cronograma de pagos
@@ -211,8 +214,14 @@ export default {
     console.log(this.paymentSchedule);
   },
   created() {
-    console.log(this.initialCosts, this.loanDetails,this.periodicCosts, this.graceType, this.graceTypePeriods);
-  }
+    console.log(
+      this.initialCosts,
+      this.loanDetails,
+      this.periodicCosts,
+      this.graceType,
+      this.graceTypePeriods
+    );
+  },
 };
 </script>
 

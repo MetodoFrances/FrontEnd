@@ -24,4 +24,13 @@ export class InitialCosts {
     this.studyCommission = parseFloat(this.studyCommission);
     this.activationFee = parseFloat(this.activationFee);
   }
+  isValid() {
+    return (
+      this.registrationCosts &&
+      this.notarialCosts &&
+      this.appraisal &&
+      this.studyCommission &&
+      this.activationFee
+    );
+  }
 }

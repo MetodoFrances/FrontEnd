@@ -9,4 +9,7 @@ export class PeriodicCosts {
     this.periodicCommission = parseFloat(this.periodicCommission);
     this.riskInsurancePercentage = parseFloat(this.riskInsurancePercentage);
   }
+  isValid() {
+    return this.periodicCommission && this.riskInsurancePercentage;
+  }
 }

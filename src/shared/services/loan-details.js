@@ -20,7 +20,7 @@ export class LoanDetails {
     // Porcentaje IGV
     this.IGVpercentage = 0.18;
     // Porcentaje impuesto a la renta
-    this.incomeTaxPercentage = 0.30;
+    this.incomeTaxPercentage = 0.3;
     // Porcentaje recompra
     this.buyBackPercentage = buyBackPercentage;
     // Porcentaje tasa Nominal
@@ -34,5 +34,14 @@ export class LoanDetails {
     this.paymentFrecuencyInDays = parseFloat(this.paymentFrecuencyInDays);
     this.TEApercentage = parseFloat(this.TEApercentage);
     this.buyBackPercentage = parseFloat(this.buyBackPercentage);
+  }
+  isValid() {
+    return (
+      this.salePrice &&
+      this.years &&
+      this.paymentFrecuencyInDays &&
+      this.TEApercentage &&
+      this.buyBackPercentage
+    );
   }
 }

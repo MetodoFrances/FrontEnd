@@ -1,5 +1,6 @@
 <template>
-    <PaymentScheduleComponent></PaymentScheduleComponent>
+  <pv-toast />
+  <PaymentScheduleComponent></PaymentScheduleComponent>
 </template>
 <script>
 import { InitialCosts } from "./shared/services/inital-costs.js";
@@ -13,7 +14,7 @@ export default {
   name: "App",
   components: {
     PaymentScheduleDataTableComponent,
-    PaymentScheduleComponent
+    PaymentScheduleComponent,
   },
   data() {
     return {

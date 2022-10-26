@@ -4,9 +4,9 @@ export class PaymentScheduleApiService {
     this._endpoint = "/loans";
   }
   createLoan(loanDto) {
-    return http.post(this._endpoint,loanDto);
+    return http.post(this._endpoint, loanDto);
   }
-  getLoanById(id){
-    return http.get(`${this._endpoint}/${id}`);
+  getLoans() {
+    return http.get(this._endpoint);
   }
 }

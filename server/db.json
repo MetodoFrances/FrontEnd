@@ -1,9 +1,20 @@
 {
-    "collection": [
-        {
-            "data": "some data"
-        }
-    ],
-    "loans": [
-    ]
+  "loans": [
+    {
+      "loan_issue_date": "2022-10-25T23:47:07",
+      "sale_price": null,
+      "loan_time": null,
+      "payment_frecuency": null,
+      "buyback_percentage": null,
+      "currency_id": 1,
+      "notarial_cost": null,
+      "registration_cost": null,
+      "appraisal": null,
+      "study_commission": null,
+      "activation_commission": null,
+      "periodic_commission": null,
+      "risk_insurance_percentage": null,
+      "id": 1
+    }
+  ]
 }
