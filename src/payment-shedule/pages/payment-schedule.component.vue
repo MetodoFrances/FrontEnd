@@ -38,12 +38,16 @@
           min="1"
         ></pv-input-text>
       </div>
-      <pv-input-text
-        type="number"
-        v-model="loanDetails.daysPerYear"
-        placeholder="Days Per Year"
-        readonly
-      ></pv-input-text>
+      <div class="inputsContainer__content">
+        <label for="daysPerYear" class="label">Days Per Year</label>
+        <pv-input-text
+          id="daysPerYear"
+          type="number"
+          v-model="loanDetails.daysPerYear"
+          placeholder="Days Per Year"
+          readonly
+        ></pv-input-text>
+      </div>
       <div class="inputsContainer__content">
         <label
           v-if="loanDetails.TEApercentage"
@@ -60,12 +64,16 @@
           step="0.0001"
         ></pv-input-text>
       </div>
-      <pv-input-text
-        type="number"
-        v-model="loanDetails.IGVpercentage"
-        placeholder="TEA percentage"
-        readonly
-      ></pv-input-text>
+      <div class="inputsContainer__content">
+        <label for="IGVpercentage" class="label">IGV Percentage</label>
+        <pv-input-text
+          id="IGVpercentage"
+          type="number"
+          v-model="loanDetails.IGVpercentage"
+          placeholder="IGV Percentage"
+          readonly
+        ></pv-input-text>
+      </div>
       <pv-input-text
         type="number"
         v-model="loanDetails.incomeTaxPercentage"
@@ -90,55 +98,104 @@
       </div>
     </div>
     <div class="inputsContainer p-input-filled second">
-      <pv-input-text
-        type="number"
-        v-model="initialCosts.notarialCosts"
-        placeholder="Notarial costs"
-      ></pv-input-text>
-      <pv-input-text
-        type="number"
-        v-model="initialCosts.registrationCosts"
-        placeholder="Registration costs"
-        min="1"
-        step="0.05"
-      ></pv-input-text>
-      <pv-input-text
-        type="number"
-        v-model="initialCosts.appraisal"
-        placeholder="Appraisal"
-        min="1"
-        step="0.05"
-      ></pv-input-text>
-      <pv-input-text
-        type="number"
-        v-model="initialCosts.studyCommission"
-        placeholder="Study commission"
-        min="1"
-        step="0.05"
-      ></pv-input-text>
-      <pv-input-text
-        type="number"
-        v-model="initialCosts.activationFee"
-        placeholder="Activacion Fee"
-        min="1"
-        step="0.05"
-      ></pv-input-text>
+      <div class="inputsContainer__content">
+        <label 
+          v-if="initialCosts.notarialCosts" 
+          for="notarialCosts" 
+          class="label">Notarial Costs</label>
+        <pv-input-text
+          id="notarialCosts"
+          type="number"
+          v-model="initialCosts.notarialCosts"
+          placeholder="Notarial costs"
+        ></pv-input-text>
+      </div>
+      <div class="inputsContainer__content">
+        <label 
+          v-if="initialCosts.registrationCosts"
+          for="registrationCosts"
+          class="label">Registration Costs</label>
+        <pv-input-text
+          id="registrationCosts"
+          type="number"
+          v-model="initialCosts.registrationCosts"
+          placeholder="Registration costs"
+          min="1"
+          step="0.05"
+        ></pv-input-text>
+      </div>
+      <div class="inputsContainer__content">
+        <label 
+          v-if="initialCosts.appraisal"
+          for="appraisal"
+          class="label">Appraisal</label>
+        <pv-input-text
+          id="appraisal"
+          type="number"
+          v-model="initialCosts.appraisal"
+          placeholder="Appraisal"
+          min="1"
+          step="0.05"
+        ></pv-input-text>
+      </div>
+      <div class="inputsContainer__content">
+        <label 
+          v-if="initialCosts.studyCommission"
+          for="studyCommission"
+          class="label">Study Commission</label>
+        <pv-input-text
+          id="studyCommission"
+          type="number"
+          v-model="initialCosts.studyCommission"
+          placeholder="Study commission"
+          min="1"
+          step="0.05"
+        ></pv-input-text>
+      </div>
+      <div class="inputsContainer__content">
+        <label 
+        v-if="initialCosts.activationFee"
+        for="activationFee"
+        class="label">Activation Fee</label>
+        <pv-input-text
+          id="activationFee"
+          type="number"
+          v-model="initialCosts.activationFee"
+          placeholder="Activacion Fee"
+          min="1"
+          step="0.05"
+        ></pv-input-text>
+      </div>
     </div>
     <div class="inputsContainer p-input-filled third">
-      <pv-input-text
-        type="number"
-        v-model="periodicCosts.periodicCommission"
-        placeholder="Periodic Commission"
-        min="0.05"
-        step="0.05"
-      ></pv-input-text>
-      <pv-input-text
-        type="number"
-        v-model="periodicCosts.riskInsurancePercentage"
-        placeHolder="Risk insurance percentage"
-        min="0.001"
-        step="0.001"
-      ></pv-input-text>
+      <div class="inputsContainer__content">
+        <label 
+          v-if="periodicCosts.periodicCommission"
+          for="periodicCommission"
+          class="label">Periodic Commission</label>
+        <pv-input-text
+          id="periodicCommission"
+          type="number"
+          v-model="periodicCosts.periodicCommission"
+          placeholder="Periodic Commission"
+          min="0.05"
+          step="0.05"
+        ></pv-input-text>
+      </div>
+      <div class="inputsContainer__content">
+        <label 
+          v-if="periodicCosts.riskInsurancePercentage"
+          for="riskInsurancePercentage"
+          class="label">Risk Insurance Percentage</label>
+        <pv-input-text
+          id="riskInsurancePercentage"
+          type="number"
+          v-model="periodicCosts.riskInsurancePercentage"
+          placeHolder="Risk insurance percentage"
+          min="0.001"
+          step="0.001"
+        ></pv-input-text>
+      </div>
     </div>
   </div>
   <div class="ps-buttons">
@@ -371,13 +428,13 @@ export default {
     row-gap: 3.5rem;
   }
   .first {
-    height: 35rem;
+    height: 42rem;
   }
   .second {
-    height: 20rem;
+    height: 27rem;
   }
   .third {
-    height: 15rem;
+    height: 18rem;
   }
   .ps-buttons {
     height: 10rem;
