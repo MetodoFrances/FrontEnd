@@ -1,7 +1,14 @@
 {
-    "collection": [
-        {
-            "data": "some data"
-        }
-    ]
+  "users": [
+    {
+      "email": "miguel@hotmail.com",
+      "password": "$2a$10$BvCE08SFyKMXXbThor4t2eipSc7TOJ6l4anL97AQ8hxd8yt5gWOR.",
+      "id": 1
+    },
+    {
+      "email": "miguel2@hotmail.com",
+      "password": "$2a$10$8h51Z9cU9ZhgqCeqsecyB.sj.rsYydSS4ao3Sjbw49JVByQdwfHEG",
+      "id": 2
+    }
+  ]
 }
