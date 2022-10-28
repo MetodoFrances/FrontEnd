@@ -11,12 +11,16 @@ import Toast from 'primevue/toast';
 import ToastService from "primevue/toastservice";
 import 'primeicons/primeicons.css';
 
+import 'primevue/resources/themes/saga-blue/theme.css';     //theme
+import 'primevue/resources/primevue.min.css';              //core css
+import 'primeicons/primeicons.css';
+
 const app = createApp(App);
 
 app.config.globalProperties.$dataTransfer = $dataTransfer;
 
 // Develop content
-app.use(PrimeVue);
+app.use(PrimeVue, { ripple: true });
 app.use(router);
 app.use(Store);
 app.use(ToastService);

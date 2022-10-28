@@ -1,13 +1,18 @@
 <template>
-    <form class="sign-up__form" @submit.prevent="handleSubmit(!v$.$invalid)">
-        <pv-input-text type="text" v-model="v$.name.model" placaholder="Name"></pv-input-text>
-        <pv-input-text type="text" v-model="v$.email.$model" placeholder="Email"></pv-input-text>
-        <pv-input-text type="text" v-model="v$.password.$model" placeholder="Password"></pv-input-text>
-        <pv-input-text type="text" v-model="v$.repeatedPassword.$model" placeholder="Repeat password"></pv-input-text>
+    <div class="sign-up-container">
+        <h1 class="sign-up__title">Register</h1>
+        <form class="sign-up__form" @submit.prevent="handleSubmit(!v$.$invalid)">
+            <pv-input-text type="text" v-model="v$.name.$model" placeholder="Name"></pv-input-text>
+            <pv-input-text type="text" v-model="v$.surname.$model" placeholder="Surname"></pv-input-text>
+            <pv-input-text type="text" v-model="v$.email.$model" placeholder="Email"></pv-input-text>
+            <pv-input-text type="text" v-model="v$.ruc.$model" placeholder="RUC"></pv-input-text>
+            <pv-input-text type="text" v-model="v$.password.$model" placeholder="Password"></pv-input-text>
+            <pv-input-text type="text" v-model="v$.repeatedPassword.$model" placeholder="Repeat password"></pv-input-text>
+        </form>
         <p>Have signed up yet?</p>
-        <pv-button label="Sign In" @click="goToSignIn"></pv-button>
         <pv-button label="Sign Up" type="submit"></pv-button>
-    </form>
+        <router-link class="no-underline" to="/sign-in">Go to Sign In</router-link>
+    </div>
 </template>
 
 <script>
@@ -54,16 +59,20 @@ export default {
         }
     },
     methods: {
-        goToSignIn() {
-
-        },
         async handleSubmit(isFormValid) {
-            if(!isFormValid) return;
-            if(!this.passwordsMatches()) return;
+            console.log(this.userDto());
+            if(!isFormValid) {
+                this.$toast.add({severity: "error", summary: "Invalid Inputs", detail: "Check your data and try again", life: 3000});
+                return;
+            }
+            if(!this.passwordsMatches) {
+                this.$toast.add({severity: "error", summary: "Passwords don't match", detail: "Check your password and try again", life: 3000})
+                return;
+            }
             const newUser = this.userDto();
             this.$store.dispatch("auth/register", newUser)
                 .then( response => {
-                    //this.$toast.add({})
+                    this.$toast.add({severity: "success", summary: "User registered succesfully", detail: "You can loggin, try it!", life: 3000})
                     console.log(response);
                     this.goToSignIn();
                 })
@@ -89,6 +98,11 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
+.sign-up__title {
+    font-family: 'Roboto Slab', serif;
+    color: #FB8C00;
+    text-align: center;
+}
 </style>

@@ -16,6 +16,26 @@
       "name": "Miguel",
       "ruc": "Not specified",
       "id": 3
+    },
+    {
+      "email": "hola@hotmail.com",
+      "password": "$2a$10$COwt1GFRbfI24l0dM9rI0Ow5Ws8Rn2IAJZ2arkMR5VGJ5t5drWIHW",
+      "name": "Miguel",
+      "surname": "Cahuas",
+      "ruc": "some",
+      "id": 4
+    },
+    {
+      "email": "hol@hotmail.com",
+      "password": "$2a$10$mJSmKFVC8x6wJbdAJVe1NOP8Jy7W2Pw1VzBOuMY8aRZdxnQFC0fVS",
+      "id": 5
+    },
+    {
+      "email": "miguel5@hotmail.com",
+      "password": "$2a$10$jjkSg9G0wx0eui1UdoUKze0irJFlSD29rv2vHw3GOd6hDtqN2EKxq",
+      "name": "Miguel xd",
+      "ruc": "Not specified xd",
+      "id": 6
     }
   ]
 }

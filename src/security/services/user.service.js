@@ -4,7 +4,7 @@ class UserService {
         this._endpoint = "/users";
     }
     signIn(userDto) {
-        return http.post(`${this._endpoint}/login`,userDto);
+        return http.post("/login",userDto);
     }
     signUp(newUserDto) {
         return http.post(`${this._endpoint}/register`,newUserDto);

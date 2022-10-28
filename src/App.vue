@@ -1,15 +1,10 @@
 <template>
   <pv-toast/>
-  <SignUp></SignUp>
+  <router-view></router-view>
 </template>
 
 <script>
-import SignUp from "./security/pages/sign-up.component.vue";
-
 export default {
-  components: {
-    SignUp
-  },
   data() {
     return {
       msg: "This is an empty app component"

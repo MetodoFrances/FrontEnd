@@ -4,3 +4,5 @@ export class DataTransferService {
         this.canDisplayNavigation = false;
     }
 }
+const $dataTransfer = new DataTransferService();
+export default $dataTransfer;

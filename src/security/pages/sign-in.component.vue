@@ -8,6 +8,7 @@
             <pv-button label="Sign In" type="submit"></pv-button>
         </form>
         <img class="sign-in__banner-img" src="../../assets/leasingfy-home-backround-image.png" alt="Leasingfy Background Image">
+        <pv-button label="Go to Register" @click="goToRegister"></pv-button>
     </div>
 </template>
 
@@ -41,9 +42,9 @@ export default {
             this.notFound = false;
             if(!isFormValid) return;
             const user = this.UserDto();
-            this.$store.dispatch("auth/login")
+            this.$store.dispatch("auth/login",user)
                 .then( response => {
-                    console.log(response);
+                    this.$dataTransfer.user = response.user;
                 })
                 .catch( reason => {
                     console.error(reason);
@@ -54,6 +55,11 @@ export default {
                 email: this.email,
                 password: this.password
             }
+        },
+        goToRegister() {
+            this.$router.push({
+                name: "sign-up"
+            })
         }
     }
 }
