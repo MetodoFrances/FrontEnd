@@ -1,10 +1,14 @@
 <template>
-    <h1>Inicio de Sesion</h1>
-    <img src="../../assets/leasingfy-icon.png">
-    <form @submit.prevent="handleSubmit(!v$.$invalid)">
-        
-    </form>
-  
+    <div class="sign-in-container">
+        <h1 class="sign-in__title">Inicio de Sesion</h1>
+        <img class="sign-in__img" src="../../assets/leasingfy-icon.png" alt="Leasingfy Icon">
+        <form class="sign-in__form" @submit.prevent="handleSubmit(!v$.$invalid)">
+            <pv-input-text type="text" v-model="v$.email.$model" placeholder="Email"></pv-input-text>
+            <pv-input-text type="text" v-model="v$.password.$model" placeholder="Password"></pv-input-text>
+            <pv-button label="Sign In" type="submit"></pv-button>
+        </form>
+        <img class="sign-in__banner-img" src="../../assets/leasingfy-home-backround-image.png" alt="Leasingfy Background Image">
+    </div>
 </template>
 
 <script>
@@ -32,10 +36,24 @@ export default {
         }
     },
     methods : {
-        async handleSubmit(isFomrValid) {
+        async handleSubmit(isFormValid) {
             this.submitted = true;
             this.notFound = false;
-            
+            if(!isFormValid) return;
+            const user = this.UserDto();
+            this.$store.dispatch("auth/login")
+                .then( response => {
+                    console.log(response);
+                })
+                .catch( reason => {
+                    console.error(reason);
+                })
+        },
+        UserDto() {
+            return {
+                email: this.email,
+                password: this.password
+            }
         }
     }
 }

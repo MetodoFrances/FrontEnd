@@ -9,6 +9,13 @@
       "email": "miguel2@hotmail.com",
       "password": "$2a$10$8h51Z9cU9ZhgqCeqsecyB.sj.rsYydSS4ao3Sjbw49JVByQdwfHEG",
       "id": 2
+    },
+    {
+      "email": "miguel3@hotmail.com",
+      "password": "$2a$10$jonIWq5W42V5yBwh7AC3CuMjsmV.R9frlj/IksTyP3s4RAg6C12aq",
+      "name": "Miguel",
+      "ruc": "Not specified",
+      "id": 3
     }
   ]
 }
