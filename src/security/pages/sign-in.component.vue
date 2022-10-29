@@ -4,11 +4,13 @@
           <h1 class="sign-in__title">INICIO DE SESION</h1>
           <img class="sign-in__img" src="../../assets/leasingfy-icon.png" alt="Leasingfy Icon">
           <div class="sign-in-container-input">
-            <pv-input-text class="sign-in__input" type="text" v-model="v$.email.$model" placeholder="Correo"></pv-input-text><nav></nav>
-            <pv-input-text class="sign-in__input" type="text" v-model="v$.password.$model" placeholder="Contraseña"></pv-input-text>
-            <h2 class="sign-in__subtitle">¿Olvidaste tu contraseña?</h2>
-            <pv-button class="sign-in__btn" label="Iniciar Sesión" type="submit"></pv-button>
-            <h2 class="sign-in__subtitle">¿No tienes una cuenta? <pv-button  class="sign-in__btn__register" label="Regístrate Aquí" @click="goToRegister"></pv-button> </h2>
+            <form class="sign-in__form" @submit.prevent="handleSubmit(!v$.$invalid)">
+              <pv-input-text class="sign-in__input" type="text" v-model="v$.email.$model" placeholder="Correo"></pv-input-text><nav></nav>
+              <pv-input-text class="sign-in__input" type="text" v-model="v$.password.$model" placeholder="Contraseña"></pv-input-text>
+              <h2 class="sign-in__subtitle">¿Olvidaste tu contraseña?</h2>
+              <pv-button class="sign-in__btn" label="Iniciar Sesión" type="submit"></pv-button>
+              <h2 class="sign-in__subtitle">¿No tienes una cuenta? <pv-button  class="sign-in__btn__register" label="Regístrate Aquí" @click="goToRegister"></pv-button></h2>
+            </form>
           </div>
         </div>
         <div class="sign-in__banner-img-container">
@@ -72,7 +74,6 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 *{
   font-family: 'Roboto Slab', serif;
   margin:0;
