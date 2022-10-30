@@ -72,7 +72,9 @@ export default {
         { field: "netCashFlow", header: "Net_Cash_Flow" },
         { field: "TCEAFlow", header: "TCEA_Flow" },
       ],
-      editingRows: [],
+      editingRows: [],  
+      approxTir: 0.00,
+      flows: []
     };
   },
   props: {
@@ -89,6 +91,9 @@ export default {
         this.loanDetails.daysPerYear / this.loanDetails.paymentFrecuencyInDays;
       this.totalInstallments =
         this.installmentsPerYear * this.loanDetails.years;
+      
+      
+
       this.IGV =
         (this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
         this.loanDetails.IGVpercentage;
@@ -173,6 +178,8 @@ export default {
           (leasing.endingBalance * this.TEPpercentage) /
           (1 - Math.pow(1 + this.TEPpercentage, remainingFees * -1));
       }
+
+      this.approxTir += netCashFlow;
     },
     validateTypeOfGracePeriod(arr, leasing) {
       for (
@@ -186,6 +193,12 @@ export default {
       console.log(e.data);
     },
     PaymentScheduleReCalculation() {},
+    calculateTIR() {
+      let van = 0;
+      for(let i = this.approxTir; van > 0;++i) {
+
+      }
+    }
   },
   computed: {
     // Cronograma de pagos
@@ -207,6 +220,11 @@ export default {
         ++leasing.currentPeriod
       )
         this.calculatePaymentSchedule(arr, leasing, "None");
+      
+        // Calculating approx TIR
+        this.approxTir /= this.loanDetails.salePrice;
+        --this.approxTir;
+        this.approxTir /= this.totalInstallments;
       return arr;
     },
   },
