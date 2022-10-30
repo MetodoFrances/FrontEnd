@@ -134,7 +134,6 @@ export default {
   color: #5AB1F6;
   border-color: white;
 }
-
 .sign-in__banner-img-container{
   margin:-30rem 55%;
 
