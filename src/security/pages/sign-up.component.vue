@@ -59,23 +59,27 @@ export default {
         }
     },
     methods: {
-        async handleSubmit(isFormValid) {
-            console.log(this.userDto());
+        handleSubmit(isFormValid) {
+            console.log(isFormValid);
             if(!isFormValid) {
                 this.$toast.add({severity: "error", summary: "Invalid Inputs", detail: "Check your data and try again", life: 3000});
+                console.log("Not valid x2");
                 return;
             }
             if(!this.passwordsMatches) {
-                this.$toast.add({severity: "error", summary: "Passwords don't match", detail: "Check your password and try again", life: 3000})
+                this.$toast.add({severity: "error", summary: "Passwords don't match", detail: "Check your password and try again", life: 3000});
+                console.log("NotValid x3");
                 return;
             }
             const newUser = this.userDto();
             this.$store.dispatch("auth/register", newUser)
-                .then( response => {
-                    this.$toast.add({severity: "success", summary: "User registered succesfully", detail: "You can loggin, try it!", life: 3000})
-                    console.log(response);
-                    this.goToSignIn();
-                })
+                .then(
+                    response => {
+                        this.$toast.add({severity: "success", summary: "User registered succesfully", detail: "You can loggin, try it!", life: 3000})
+                        console.log(response);
+                        this.goToSignIn();
+                    }
+                )
                 .catch( reason => {
                     console.error(reason);
                 })

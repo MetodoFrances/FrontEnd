@@ -40,7 +40,10 @@ export default {
         async handleSubmit(isFormValid) {
             this.submitted = true;
             this.notFound = false;
-            if(!isFormValid) return;
+            if(!isFormValid) {
+                console.log("Not Valid");
+                return;
+            }
             const user = this.UserDto();
             this.$store.dispatch("auth/login",user)
                 .then( response => {
