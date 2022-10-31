@@ -9,21 +9,21 @@
             </b>
           </Button>
         </div>
-         
-        <h2></h2>
+         <Chart type="line"/>
+        <div class="linea"></div>
 
         <div class="input-group justicy-content-between">
-          <span> I.G.V. {{ igv }} </span>
-        <h2></h2>
-          <span>Valor de venta del activo {{ vventactivo }} </span>
-        <h2></h2>
-          <span>Monto del Leasing {{montol}}</span>
-          <h2></h2>
-          <span>% de TEP: {{TEP}}</span>
-        <h2></h2>
-          <span>N° Cuotas por Año {{cuotasaños}}</span>
-        <h2></h2>
-          <span>N° Total de Cuotas {{totalcuotas}}</span>
+          <h3> I.G.V. {{ igv }} </h3>
+          <div class="linea"></div>
+          <h3>Valor de venta del activo {{ vventactivo }} </h3>
+          <div class="linea"></div>
+          <h3>Monto del Leasing {{montol}}</h3>
+          <div class="linea"></div>
+          <h3>% de TEP: {{TEP}}</h3>
+          <div class="linea"></div>
+          <h3>N° Cuotas por Año {{cuotasaños}}</h3>
+          <div class="linea"></div>
+          <h3>N° Total de Cuotas {{totalcuotas}}</h3>
         </div> 
       </div>
         
@@ -36,10 +36,10 @@
           </Button>
         </div>
 
-        <h2></h2>
+        <div class="linea"></div>
 
         <div class="input-group justicy-content-between">
-          <span> Seguro riesgo {{ igv }} </span>
+          <h3> Seguro riesgo {{ igv }} </h3>
         </div> 
       </div>
 
@@ -52,20 +52,20 @@
           </Button>
         </div>
          
-        <h2></h2>
+        <div class="linea"></div>
 
         <div class="input-group justicy-content-between">
-          <span>Intereses {{ intereses }} </span>
-        <h2></h2>
-          <span>Amortización del capital  {{ amorticap }} </span>
-        <h2></h2>
-          <span>Seguro contra todo riesgo {{seguroctriesgo}}</span>
-          <h2></h2>
-          <span>Comisiones periodicas {{comisionesp}}</span>
-        <h2></h2>
-          <span>Recompra {{recompra}}</span>
-        <h2></h2>
-          <span>Desembolso total {{desembolso}}</span>
+          <h3>Intereses {{ intereses }} </h3>
+          <div class="linea"></div>
+          <h3>Amortización del capital  {{ amorticap }} </h3>
+          <div class="linea"></div>
+          <h3>Seguro contra todo riesgo {{seguroctriesgo}}</h3>
+          <div class="linea"></div>
+          <h3>Comisiones periodicas {{comisionesp}}</h3>
+          <div class="linea"></div>
+          <h3>Recompra {{recompra}}</h3>
+          <div class="linea"></div>
+          <h3>Desembolso total {{desembolso}}</h3>
         </div> 
       </div>
         
@@ -78,16 +78,16 @@
           </Button>
         </div>
          
-        <h2></h2>
+        <div class="linea"></div>
 
         <div class="input-group justicy-content-between">
-          <span>TCEA Flujo Bruto {{ TCEAFB }} </span>
-        <h2></h2>
-          <span>TCEA Flujo Neto {{TCEAFN}}</span>
-          <h2></h2>
-          <span>VAN Flujo Bruto {{VANFB}}</span>
-        <h2></h2>
-          <span>VAN Flujo Neto {{VANFN}}</span>
+          <h3>TCEA Flujo Bruto {{ TCEAFB }} </h3>
+          <div class="linea"></div>
+          <h3>TCEA Flujo Neto {{TCEAFN}}</h3>
+          <div class="linea"></div>
+          <h3>VAN Flujo Bruto {{VANFB}}</h3>
+          <div class="linea"></div>
+          <h3>VAN Flujo Neto {{VANFN}}</h3>
         
       </div>  
       </div>
@@ -97,9 +97,28 @@
   </template>
   
   <script>
- 
+  import{InitialCosts} from "../../shared/service/InitialCosts.js";
+  import{LoanDetails} from "../../shared/service/LoanDetails.js";
+  import{PeriodicCommission} from "../../shared/service/PeriodicCommission.js";
 
-  </script>
+  export default{
+    name: "payment-results",
+    data(){
+      return{
+        initalCosts:new InitialCosts(),
+        loanDetails: new LoanDetails(),
+        periodicCommission: new PeriodicCommission(),
+      }
+    },
+
+    mounted(){
+      /*this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission) => {
+        this.initialCosts = initialCosts;
+        this.loanDetails = loanDetails;
+        this.periodicCommission = periodicCommission;*/ 
+    }
+  }
+   </script>
   
   <style scoped>
    *{
@@ -115,7 +134,7 @@
    }
    .cuadro{
     font-size: 20px;
-    padding-bottom: 4px;
+    padding-bottom: 3px;
     margin-bottom: 20px;
     text-align: center;
     flex-wrap: wrap;
@@ -126,10 +145,7 @@
     width: 13cm;
   }
 
-   h1{
-    text-align: center;
-    color: #FB8C00;
-   }
+
 
    select{
     width: 100%;
@@ -151,12 +167,14 @@
     margin: 10px auto 0;
     padding: 0 20px;
   }
-  h2 {
-    font-size: 20px;
-    border-bottom: 1px solid orange;
-    padding-bottom: 4px;
-    margin-bottom: 10px;
+  .linea {
+    border-bottom: 2px solid orange;
+    padding-bottom: 1px;
+    margin-bottom: 6px;
     position: relative;
   }
   
+  h3{
+   font-weight:normal;
+  }
   </style>
