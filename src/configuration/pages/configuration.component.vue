@@ -1,5 +1,3 @@
-
-
   <template>
     <div class="container">
     <div class="content">
@@ -32,7 +30,9 @@
         <img class="imagenen_content__img" src="/assets/image 13.png" alt="">
     </div>
 
-
+    <div class="button">
+    <button class="button_Guardar">Guardar</Button>
+    </div>
     </div>
     </div>
     
@@ -43,10 +43,18 @@
   export default {
     name: "configuration",
     data() {
-      return {
-
-      }
+        return {
+            loading: [false, false, false]
+        }
     },
+    methods: {
+        load(index) {
+            this.loading[index] = true;
+            setTimeout(() => this.loading[index] = false, 1000);
+        }
+    },
+
+    
     created() {
       const configurationApiService = new ConfigurationApiService();
       configurationApiService.getLoans()
@@ -67,7 +75,7 @@
     display:flex;
     justify-content: center;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  
+
    }
 
    .title{
@@ -84,6 +92,23 @@
     padding-top: 40px;
     
    }
+
+   .button{
+    text-align: center;
+   }
+   .button_Guardar{
+    border:0;
+    border-radius:10px;
+    padding: 15px;
+    width: 250px;
+    background: #FB8C00;
+    color:white;
+   
+  }
+
+  .button_Guardar:hover{
+    background: #e28718;
+  }
 
    @media only screen
   and (max-width: 600px){
@@ -104,6 +129,8 @@
    }
 
   }
+  
+  
   
   
   </style>
