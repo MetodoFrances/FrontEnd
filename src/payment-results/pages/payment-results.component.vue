@@ -110,6 +110,7 @@
         periodicCommission: new PeriodicCommission(),
       }
     },
+ 
 
     mounted(){
       /*this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission) => {
