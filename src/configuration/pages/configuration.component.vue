@@ -1,13 +1,15 @@
+
+
   <template>
     <div class="container">
     <div class="content">
     <div>
-    <h1>CONFIGURACIÓN</h1>
+    <h1 class="title">CONFIGURACIÓN</h1>
     </div>
 
     <div>
         <h3>País:</h3>
-    <select >
+    <select class="select">
       <option>Perú</option>
       <option>Estados Unidos</option>
       <option>China</option>
@@ -17,7 +19,7 @@
 
     <div>
         <h3>Idioma:</h3>
-    <select >
+    <select class="select">
       <option>Español</option>
       <option>Inglés</option>
       <option>Chino</option>
@@ -27,8 +29,9 @@
 
     <div class="imagen_content">
     
-        <img src="/assets/image 13.png" alt="">
+        <img class="imagenen_content__img" src="/assets/image 13.png" alt="">
     </div>
+
 
     </div>
     </div>
@@ -59,22 +62,20 @@
   </script>
   
   <style scoped>
-   *{
-     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-   }
 
    .container{
     display:flex;
     justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
    }
 
-   h1{
+   .title{
     text-align: center;
     color: #FB8C00;
    }
 
-   select{
+   .select{
     width: 100%;
     padding: 10px;
    }
@@ -93,11 +94,11 @@
     max-width: 100%;
     }
 
-    img{
+    .imagenen_content__img{
       width: 100%;
     }
 
-    select{
+    .select{
     width: 100%;
     padding: 10px 0;
    }
