@@ -7,7 +7,7 @@
 
     <div>
         <h3>País:</h3>
-    <select class="select">
+    <select class="select" id="selector_1">
       <option>Perú</option>
       <option>Estados Unidos</option>
       <option>China</option>
@@ -17,7 +17,7 @@
 
     <div>
         <h3>Idioma:</h3>
-    <select class="select">
+    <select class="select" id="selector_2">
       <option>Español</option>
       <option>Inglés</option>
       <option>Chino</option>
@@ -28,17 +28,20 @@
     <div class="imagen_content">
     
         <img class="imagenen_content__img" src="/assets/image 13.png" alt="">
-    </div>
+    </div >
 
     <div class="button">
-    <button class="button_Guardar">Guardar</Button>
+    <button type="button" class="button_Guardar"
+    v-on:dblclick='saveSettings()'>Guardar</Button>
     </div>
     </div>
     </div>
+
     
   </template>
   
   <script>
+  import { Settings } from "../../shared/services/settings";
   import { ConfigurationApiService } from "../service/configuration.service.js";
   export default {
     name: "configuration",
@@ -51,13 +54,14 @@
         load(index) {
             this.loading[index] = true;
             setTimeout(() => this.loading[index] = false, 1000);
-        }
-    },
+        },
+      }
+      ,
 
     
     created() {
       const configurationApiService = new ConfigurationApiService();
-      configurationApiService.getLoans()
+      configurationApiService.getSettings()
       .then((response) =>  {
         console.log(response.data);
       })
@@ -65,6 +69,9 @@
         
       })
     }
+
+  
+    
   }
 
   </script>
