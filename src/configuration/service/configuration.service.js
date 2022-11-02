@@ -11,5 +11,8 @@ export class ConfigurationApiService {
     saveSettings(settings){
         return http.post(this._endpoint,settings);
     }
+    updateSettings(id,settings) {
+        return http.put(`${this._endpoint}/${id}`,settings);
+    }
 
 }

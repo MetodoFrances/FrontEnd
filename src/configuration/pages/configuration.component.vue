@@ -7,21 +7,21 @@
 
     <div>
         <h3>País:</h3>
-    <select class="select" id="selector_1">
-      <option>Perú</option>
-      <option>Estados Unidos</option>
-      <option>China</option>
-      <option>Brasil</option>
+    <select v-model="currentSettings.country" class="select" id="selector_1">
+      <option value="Peru">Perú</option>
+      <option value="Estados Unidos">Estados Unidos</option>
+      <option value="China">China</option>
+      <option value="Brasil">Brasil</option>
     </select>
     </div>
 
     <div>
         <h3>Idioma:</h3>
-    <select class="select" id="selector_2">
-      <option>Español</option>
-      <option>Inglés</option>
-      <option>Chino</option>
-      <option>Portugués</option>
+    <select v-model="currentSettings.languageName" class="select" id="selector_2">
+      <option value="Español">Español</option>
+      <option value="Ingles">Inglés</option>
+      <option value="Chino">Chino</option>
+      <option value="Portugues">Portugués</option>
     </select>
     </div>
 
@@ -31,8 +31,7 @@
     </div >
 
     <div class="button">
-    <button type="button" class="button_Guardar"
-    v-on:dblclick='saveSettings()'>Guardar</Button>
+    <button type="button" class="button_Guardar" @click="saveSettings">Guardar</Button>
     </div>
     </div>
     </div>
@@ -47,31 +46,39 @@
     name: "configuration",
     data() {
         return {
-            loading: [false, false, false]
+          loading: [false, false, false],
+          configurationApiService: new ConfigurationApiService(),
+          currentSettings: new Settings(null,null,null,null)
         }
     },
     methods: {
-        load(index) {
-            this.loading[index] = true;
-            setTimeout(() => this.loading[index] = false, 1000);
-        },
+      load(index) {
+        this.loading[index] = true;
+        setTimeout(() => this.loading[index] = false, 1000);
+      },
+      saveSettings() {
+        this.configurationApiService.updateSettings(this.currentSettings.id,this.currentSettings.toObjectForCreating())
+          .then( response => {
+            const data = response.data;
+            this.currentSettings.setByObject(data);
+            console.log(data);
+          })
+          .catch( reason => {
+            console.error(reason);
+          })
       }
-      ,
-
-    
-    created() {
-      const configurationApiService = new ConfigurationApiService();
-      configurationApiService.getSettings()
+    },
+    mounted() {
+      this.configurationApiService.getSettings()
       .then((response) =>  {
-        console.log(response.data);
+        const data = response.data[0];
+        this.currentSettings.setByObject(data);
+        console.log(data);
       })
-      .catch((error) => {
-        
+      .catch(reason => {
+        console.error(reason);
       })
     }
-
-  
-    
   }
 
   </script>
