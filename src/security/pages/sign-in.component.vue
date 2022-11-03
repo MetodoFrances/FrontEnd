@@ -48,6 +48,7 @@ export default {
             this.$store.dispatch("auth/login",user)
                 .then( response => {
                     this.$dataTransfer.user = response.user;
+                    this.$toast.add({severity: "success", summary: "User logged in succesfully", detail: "You are able to enjoy the app!!!", life: 3000})
                 })
                 .catch( reason => {
                     console.error(reason);

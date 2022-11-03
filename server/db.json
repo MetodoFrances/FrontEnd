@@ -2,47 +2,11 @@
   "users": [
     {
       "email": "miguel@hotmail.com",
-      "password": "$2a$10$BvCE08SFyKMXXbThor4t2eipSc7TOJ6l4anL97AQ8hxd8yt5gWOR.",
+      "password": "$2a$10$0Pn3dzanIzCJXe/ouEH64exmaeNTrdWuDH8E5Fmh3sCo7H5IPmbBO",
+      "name": "miguel",
+      "surname": "cahuas",
+      "ruc": "nosequeponer",
       "id": 1
-    },
-    {
-      "email": "miguel2@hotmail.com",
-      "password": "$2a$10$8h51Z9cU9ZhgqCeqsecyB.sj.rsYydSS4ao3Sjbw49JVByQdwfHEG",
-      "id": 2
-    },
-    {
-      "email": "miguel3@hotmail.com",
-      "password": "$2a$10$jonIWq5W42V5yBwh7AC3CuMjsmV.R9frlj/IksTyP3s4RAg6C12aq",
-      "name": "Miguel",
-      "ruc": "Not specified",
-      "id": 3
-    },
-    {
-      "email": "hola@hotmail.com",
-      "password": "$2a$10$COwt1GFRbfI24l0dM9rI0Ow5Ws8Rn2IAJZ2arkMR5VGJ5t5drWIHW",
-      "name": "Miguel",
-      "surname": "Cahuas",
-      "ruc": "some",
-      "id": 4
-    },
-    {
-      "email": "hol@hotmail.com",
-      "password": "$2a$10$mJSmKFVC8x6wJbdAJVe1NOP8Jy7W2Pw1VzBOuMY8aRZdxnQFC0fVS",
-      "id": 5
-    },
-    {
-      "email": "miguel5@hotmail.com",
-      "password": "$2a$10$jjkSg9G0wx0eui1UdoUKze0irJFlSD29rv2vHw3GOd6hDtqN2EKxq",
-      "name": "Miguel xd",
-      "ruc": "Not specified xd",
-      "id": 6
-    },
-    {
-      "email": "bb@hotmail.com",
-      "password": "$2a$10$O2n5KHjcp7WDll4V4w2YzeSL5D7iFZ2RmHwHMR.Cf.axxnbOIupS2",
-      "name": "Mig",
-      "ruc": "Not specid",
-      "id": 7
     }
   ]
 }

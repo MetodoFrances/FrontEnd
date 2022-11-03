@@ -8,9 +8,9 @@
             <pv-input-text type="text" v-model="v$.ruc.$model" placeholder="RUC"></pv-input-text>
             <pv-input-text type="text" v-model="v$.password.$model" placeholder="Password"></pv-input-text>
             <pv-input-text type="text" v-model="v$.repeatedPassword.$model" placeholder="Repeat password"></pv-input-text>
+            <pv-button label="Sign Up" type="submit"></pv-button>
         </form>
         <p>Have signed up yet?</p>
-        <pv-button label="Sign Up" type="submit"></pv-button>
         <router-link class="no-underline" to="/sign-in">Go to Sign In</router-link>
     </div>
 </template>
@@ -59,6 +59,11 @@ export default {
         }
     },
     methods: {
+        goToSignIn() {
+            this.$router.push({
+                name: "sign-in"
+            });
+        },
         handleSubmit(isFormValid) {
             console.log(isFormValid);
             if(!isFormValid) {
@@ -77,6 +82,9 @@ export default {
                     response => {
                         this.$toast.add({severity: "success", summary: "User registered succesfully", detail: "You can loggin, try it!", life: 3000})
                         console.log(response);
+                        setTimeout(() => {
+
+                        },1000);
                         this.goToSignIn();
                     }
                 )
