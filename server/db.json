@@ -1,7 +1,12 @@
 {
-    "collection": [
-        {
-            "data": "some data"
-        }
-    ]
+  "users": [
+    {
+      "email": "miguel@hotmail.com",
+      "password": "$2a$10$0Pn3dzanIzCJXe/ouEH64exmaeNTrdWuDH8E5Fmh3sCo7H5IPmbBO",
+      "name": "miguel",
+      "surname": "cahuas",
+      "ruc": "nosequeponer",
+      "id": 1
+    }
+  ]
 }

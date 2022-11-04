@@ -4,8 +4,8 @@ import Navbar from "@/shared/pages/Navbar.vue";
 </script>
 
 <template>
-  <Navbar></Navbar>
-  <RouterView />
+  <RouterView v-if="userLogged === false"/>
+  <Navbar v-show="userLogged"></Navbar>
   <p>{{msg}}</p>
 </template>
 
@@ -13,7 +13,7 @@ import Navbar from "@/shared/pages/Navbar.vue";
 export default {
   data() {
     return {
-
+      userLogged: false
     }
   }
 }
