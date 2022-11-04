@@ -21,7 +21,7 @@
           <div class="linea"></div>
           <div class="col">
             <li>Valor de venta del activo</li>
-            <li>{{ loanDetails.saleValue }} </li>
+            <li>{{ saleValue }} </li>
           </div>
         
           <div class="linea"></div>
@@ -33,7 +33,7 @@
           <div class="linea"></div>
           <div class="col">
             <li>% de TEP</li>
-            <li>{{TEPpercentage}}</li>
+            <li>{{TEPpercentage}} % </li>
           </div>
           
           <div class="linea"></div>
@@ -135,12 +135,12 @@
         <div class="input-group justify-content-between">
           <div class="col">
             <li>TCEA Flujo Bruto </li>
-            <li> {{ TCEAFB }} </li>
+            <li> {{ TCEAFB }} % </li>
           </div>
           <div class="linea"></div>
           <div class="col">
             <li>TCEA Flujo Neto </li>
-            <li>{{TCEAFN}}</li>
+            <li>{{TCEAFN}} %</li>
           </div>
           
           <div class="linea"></div>
@@ -175,8 +175,8 @@
     data(){
       return{
         initialCosts: new InitialCosts(250,150,80,100,50),
-        loanDetails: new LoanDetails(11800,3,30,0.012,0.001,0.030),
-        periodicCosts: new PeriodicCost(10,0.00030),
+        loanDetails: new LoanDetails(11800,3,30,0.12,0.01,0.030),
+        periodicCosts: new PeriodicCost(10,0.0030),
         oportunityCosts: new OportunityCosts(),
         seguroctriesgo: null,
         leasingAmount: null,
@@ -194,55 +194,56 @@
       //paymentscheduledata esto es jalarlo desde el compomente de payment.
       calcute(){
         this.IGV =
-          (this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
-          this.loanDetails.IGVpercentage;
+          ((this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
+          this.loanDetails.IGVpercentage).toFixed(2);
         
         //paymentscheduledata
-        this.loanDetails.saleValue = this.loanDetails.salePrice - this.IGV;
+        this.saleValue = (this.loanDetails.salePrice - this.IGV).toFixed(2);
         //paymentscheduledata
         this.leasingAmount =
-          this.loanDetails.saleValue +
-          this.initialCosts.notarialCosts +
-          this.initialCosts.registrationCosts +
-          this.initialCosts.appraisal +
-          this.initialCosts.studyCommission +
-          this.initialCosts.activationFee;
+          (parseFloat(this.saleValue) +
+          parseFloat(this.initialCosts.notarialCosts)+
+          parseFloat(this.initialCosts.registrationCosts) +
+          parseFloat(this.initialCosts.appraisal) +
+          parseFloat(this.initialCosts.studyCommission)+
+          parseFloat(this.initialCosts.activationFee)).toFixed(2);
 
         //paymentscheduledata
         this.TEPpercentage =
-          Math.pow(
+         ((Math.pow(
             1 + this.loanDetails.TEApercentage,
             this.loanDetails.paymentFrecuencyInDays / this.loanDetails.daysPerYear
-          ) - 1;
+          ) - 1)*100).toFixed(7);
         //paymentscheduledata
         this.installmentsPerYear=this.loanDetails.daysPerYear/this.loanDetails.paymentFrecuencyInDays;
 
         //paymentscheduledata
-        this.totalInstallments=this.installmentsPerYear/this.loanDetails.daysPerYear;
+        this.totalInstallments=this.installmentsPerYear*this.loanDetails.years;
 
         //paymentscheduledata
         this.riskInsurance =
-          (this.periodicCosts.riskInsurancePercentage *
+         ((this.periodicCosts.riskInsurancePercentage *
             this.loanDetails.salePrice) /
-          this.installmentsPerYear;
+          this.installmentsPerYear).toFixed(2);
 
         //this.intereses=;
         //this.amorticap=;
 
-        this.seguroctriesgo=this.riskInsurance*this.totalInstallments;
+        this.seguroctriesgo=(this.riskInsurance*this.totalInstallments).toFixed(2);
 
-        this.comisionesp=this.periodicCosts.periodicCommission*this.totalInstallments;
+        this.comisionesp=(this.periodicCosts.periodicCommission*this.totalInstallments).toFixed(2);
       
       //paymentscheduledata
         this.buyback =
-          this.loanDetails.saleValue * this.loanDetails.buyBackPercentage;
+          (this.saleValue * this.loanDetails.buyBackPercentage).toFixed(2);
 
         this.desembolso=
-          this.seguroctriesgo+this.comisionesp+this.buyback; //+this.intereses+this.amorticap
+          (parseFloat(this.seguroctriesgo) + parseFloat(this.comisionesp) + parseFloat(this.buyback)).toFixed(2); //+this.intereses+this.amorticap falta sumar esos dos
 
       },
     },
-    mounted(){
+
+    mounted(){ // pedir componente de payment-schedule TCEAFB / TCEAFN / VANFB / VANFN 
       this.calcute();
     }
   }
