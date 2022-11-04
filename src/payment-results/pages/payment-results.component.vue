@@ -226,8 +226,8 @@
             this.loanDetails.salePrice) /
           this.installmentsPerYear).toFixed(2);
 
-        //this.intereses=;
-        //this.amorticap=;
+        //this.intereses=; suma de los intereses llamarlo de payment
+        //this.amorticap=; suma de los amortización llamarlo de payment
 
         this.seguroctriesgo=(this.riskInsurance*this.totalInstallments).toFixed(2);
 
