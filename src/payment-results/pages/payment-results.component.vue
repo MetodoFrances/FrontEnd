@@ -12,18 +12,42 @@
          <Chart type="line"/>
         <div class="linea"></div>
 
-        <div class="input-group justicy-content-between">
-          <h3> I.G.V. {{ igv }} </h3>
+        <div class="input-group ">
+          <div class="col">
+            <li> I.G.V. </li>
+            <li> {{ IGV }} </li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>Valor de venta del activo {{ vventactivo }} </h3>
+          <div class="col">
+            <li>Valor de venta del activo</li>
+            <li>{{ saleValue }} </li>
+          </div>
+        
           <div class="linea"></div>
-          <h3>Monto del Leasing {{montol}}</h3>
+          <div class="col">
+            <li>Monto del Leasing</li>
+            <li>{{leasingAmount}}</li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>% de TEP: {{TEP}}</h3>
+          <div class="col">
+            <li>% de TEP</li>
+            <li>{{TEPpercentage}}</li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>N° Cuotas por Año {{cuotasaños}}</h3>
+          <div class="col">
+            <li>N° Cuotas por Año</li>
+            <li>{{installmentsPerYear}}</li>   
+          </div>
+         
           <div class="linea"></div>
-          <h3>N° Total de Cuotas {{totalcuotas}}</h3>
+          <div class="col">
+            <li>N° Total de Cuotas</li>
+            <li>{{totalInstallments}}</li>
+          </div>
+          
         </div> 
       </div>
         
@@ -39,7 +63,11 @@
         <div class="linea"></div>
 
         <div class="input-group justicy-content-between">
-          <h3> Seguro riesgo {{ igv }} </h3>
+          <div class="col">
+            <li> Seguro riesgo</li>
+            <li>{{ riskInsurance}} </li>
+          </div>
+         
         </div> 
       </div>
 
@@ -55,17 +83,41 @@
         <div class="linea"></div>
 
         <div class="input-group justicy-content-between">
-          <h3>Intereses {{ intereses }} </h3>
+          <div class="col">
+            <li>Intereses</li>
+            <li>{{ intereses }} </li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>Amortización del capital  {{ amorticap }} </h3>
+          <div class="col">
+            <li>Amortización del capital</li>
+            <li>{{ amorticap }} </li>
+          </div>
+         
           <div class="linea"></div>
-          <h3>Seguro contra todo riesgo {{seguroctriesgo}}</h3>
+          <div class="col">
+            <li>Seguro contra todo riesgo</li>
+            <li>{{seguroctriesgo}}</li>
+          </div>
+         
           <div class="linea"></div>
-          <h3>Comisiones periodicas {{comisionesp}}</h3>
+          <div class="col">
+            <li>Comisiones periodicas</li>
+            <li>{{comisionesp}}</li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>Recompra {{recompra}}</h3>
+          <div class="col">
+            <li>Recompra</li>
+            <li>{{buyback}}</li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>Desembolso total {{desembolso}}</h3>
+          <div class="col">
+            <li>Desembolso total</li>
+            <li>{{desembolso}}</li>
+          </div>
+         
         </div> 
       </div>
         
@@ -80,14 +132,29 @@
          
         <div class="linea"></div>
 
-        <div class="input-group justicy-content-between">
-          <h3>TCEA Flujo Bruto {{ TCEAFB }} </h3>
+        <div class="input-group justify-content-between">
+          <div class="col">
+            <li>TCEA Flujo Bruto </li>
+            <li> {{ TCEAFB }} </li>
+          </div>
           <div class="linea"></div>
-          <h3>TCEA Flujo Neto {{TCEAFN}}</h3>
+          <div class="col">
+            <li>TCEA Flujo Neto </li>
+            <li>{{TCEAFN}}</li>
+          </div>
+          
           <div class="linea"></div>
-          <h3>VAN Flujo Bruto {{VANFB}}</h3>
+          <div class="col">
+            <li>VAN Flujo Bruto</li>
+            <li>{{VANFB}}</li>
+          </div>
+        
           <div class="linea"></div>
-          <h3>VAN Flujo Neto {{VANFN}}</h3>
+          <div class="col">
+            <li>VAN Flujo Neto</li>
+            <li>{{VANFN}}</li>
+          </div>
+          
         
       </div>  
       </div>
@@ -101,27 +168,89 @@
   import{LoanDetails} from "../../shared/service/Loan-Details.js";
   import{PeriodicCost} from "../../shared/service/Periodic-Costs.js";
   import{OportunityCosts} from "../../shared/service/Oportunity-Costs";
+  //import PaymentScheduleDataTableComponent from "./payment-schedule-data-table.component.vue";
 
   export default{
     name: "payment-results",
     data(){
       return{
-        initalCosts:new InitialCosts(),
-        loanDetails: new LoanDetails(),
-        periodicCommission: new PeriodicCost(),
+        initalCosts:new InitialCosts(250,150,80,100,50),
+        loanDetails: new LoanDetails(11800,3,30,0.012,0.001,0.030),
+        periodicCommission: new PeriodicCost(10,0.00030),
         oportunityCosts: new OportunityCosts(),
-        TCEAFB: 0.2985
+
+
+        TCEAFB: 15.168, // como ponerle porciento %
+        TCEAFN: -6.324,// como ponerle porciento %
+        VANFB: 318.36,
+        VANFN: 2504.49,
       }
     },
     created(){
       
     },
+
+    methods(){
+      //paymentscheduledata esto es jalarlo desde el compomente de payment.
+      this.IGV =
+        (this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
+        this.loanDetails.IGVpercentage;
+      
+      //paymentscheduledata
+      this.saleValue = this.loanDetails.salePrice - this.IGV;
+
+      //paymentscheduledata
+      this.leasingAmount =
+        this.loanDetails.saleValue +
+        this.initialCosts.notarialCosts +
+        this.initialCosts.registrationCosts +
+        this.initialCosts.appraisal +
+        this.initialCosts.studyCommission +
+        this.initialCosts.activationFee;
+
+      //paymentscheduledata
+      this.TEPpercentage =
+        Math.pow(
+          1 + this.loanDetails.TEApercentage,
+          this.loanDetails.paymentFrecuencyInDays / this.loanDetails.daysPerYear
+        ) - 1;
+      //paymentscheduledata
+      this.installmentsPerYear=this.loanDetails.daysPerYear/this.loanDetails.paymentFrecuencyInDays;
+
+      //paymentscheduledata
+      this.totalInstallments=this.installmentsPerYear/this.loanDetails.daysPerYear;
+
+      //paymentscheduledata
+      this.riskInsurance =
+        (this.periodicCosts.riskInsurancePercentage *
+          this.loanDetails.salePrice) /
+        this.installmentsPerYear;
+
+      //this.intereses=;
+      //this.amorticap=;
+
+      this.seguroctriesgo=this.riskInsurance*totalInstallments;
+
+      this.comisionesp=this.periodicCosts.periodicCommission*this.totalInstallments;
+      
+      //paymentscheduledata
+      this.buyback =
+        this.loanDetails.saleValue * this.loanDetails.buyBackPercentage;
+
+      this.desembolso=
+        this.seguroctriesgo+this.comisionesp+this.buyback; //+this.intereses+this.amorticap
+
+      
+    },
     mounted(){
-      this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission, TCEAFB) => {
+      this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCosts, TCEAFB, TCEAFN, VANFB, VANFN) => {
         this.initialCosts = initialCosts;
         this.loanDetails = loanDetails;
-        this.periodicCommission = periodicCommission;
+        this.periodicCosts = periodicCosts;
         this.TCEAFB = TCEAFB;
+        this.TCEAFN= TCEAFN;
+        this.VANFB= VANFB;
+        this.VANFN= VANFN;
       });
     }
   }
@@ -181,7 +310,18 @@
     position: relative;
   }
   
-  h3{
+  li{
    font-weight:normal;
+   font-size:large;
+   min-height: 50px;
+
   }
+  .col{
+    column-count: 2;
+    list-style: none;
+    column-gap: 100px;
+    
+    
+  }
+ 
   </style>
