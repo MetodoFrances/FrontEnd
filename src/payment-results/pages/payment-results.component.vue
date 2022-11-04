@@ -97,9 +97,10 @@
   </template>
   
   <script>
-  import{InitialCosts} from "../../shared/service/InitialCosts.js";
-  import{LoanDetails} from "../../shared/service/LoanDetails.js";
-  import{PeriodicCommission} from "../../shared/service/PeriodicCommission.js";
+  import{InitialCosts} from "../../shared/service/Initial-Costs.js";
+  import{LoanDetails} from "../../shared/service/Loan-Details.js";
+  import{PeriodicCost} from "../../shared/service/Periodic-Costs.js";
+  import{OportunityCosts} from "../../shared/service/Oportunity-Costs";
 
   export default{
     name: "payment-results",
@@ -107,10 +108,13 @@
       return{
         initalCosts:new InitialCosts(),
         loanDetails: new LoanDetails(),
-        periodicCommission: new PeriodicCommission(),
+        periodicCommission: new PeriodicCost(),
+        oportunityCosts: new OportunityCosts(),
       }
     },
- 
+    created(){
+      
+    },
 
     mounted(){
       /*this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission) => {
