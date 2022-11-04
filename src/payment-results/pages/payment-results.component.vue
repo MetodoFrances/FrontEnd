@@ -178,7 +178,8 @@
         loanDetails: new LoanDetails(11800,3,30,0.012,0.001,0.030),
         periodicCommission: new PeriodicCost(10,0.00030),
         oportunityCosts: new OportunityCosts(),
-
+        seguroctriesgo: null,
+        IGV: null,
 
         TCEAFB: 15.168, // como ponerle porciento %
         TCEAFN: -6.324,// como ponerle porciento %
@@ -186,12 +187,10 @@
         VANFN: 2504.49,
       }
     },
-    created(){
-      
-    },
-
-    methods(){
+  
+    methods:{
       //paymentscheduledata esto es jalarlo desde el compomente de payment.
+      calcute(){
       this.IGV =
         (this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
         this.loanDetails.IGVpercentage;
@@ -240,18 +239,20 @@
       this.desembolso=
         this.seguroctriesgo+this.comisionesp+this.buyback; //+this.intereses+this.amorticap
 
-      
+      },
     },
     mounted(){
-      this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCosts, TCEAFB, TCEAFN, VANFB, VANFN) => {
+     /* this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCosts, TCEAFB, TCEAFN, VANFB, VANFN) => {
         this.initialCosts = initialCosts;
         this.loanDetails = loanDetails;
         this.periodicCosts = periodicCosts;
+
         this.TCEAFB = TCEAFB;
         this.TCEAFN= TCEAFN;
         this.VANFB= VANFB;
         this.VANFN= VANFN;
-      });
+      }); 
+      */
     }
   }
    </script>
