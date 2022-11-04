@@ -110,17 +110,19 @@
         loanDetails: new LoanDetails(),
         periodicCommission: new PeriodicCost(),
         oportunityCosts: new OportunityCosts(),
+        TCEAFB: 0.2985
       }
     },
     created(){
       
     },
-
     mounted(){
-      /*this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission) => {
+      this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCommission, TCEAFB) => {
         this.initialCosts = initialCosts;
         this.loanDetails = loanDetails;
-        this.periodicCommission = periodicCommission;*/ 
+        this.periodicCommission = periodicCommission;
+        this.TCEAFB = TCEAFB;
+      });
     }
   }
    </script>

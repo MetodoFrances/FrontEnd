@@ -7,7 +7,7 @@ import 'primeicons/primeicons.css';
 const app = createApp(App)
 
 // Develop content
-app.use(PrimeVue);
+app.use(PrimeVue,{ ripple: true });
 app.use(createPinia())
 
 app.mount('#app')
