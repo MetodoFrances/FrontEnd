@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 import PrimeVue from 'primevue/config'
 import TreeTable from 'primevue/treetable'
@@ -14,6 +16,7 @@ import 'primeicons/primeicons.css'
 const app = createApp(App);
 app.use(router);
 app.use(PrimeVue);
+app.use(VueAxios, axios);
 
 app.component('TreeTable', TreeTable);
 app.component('Column-p', Column);

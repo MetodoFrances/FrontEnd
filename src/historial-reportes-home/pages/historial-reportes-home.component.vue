@@ -11,23 +11,32 @@
 </template>
 
 <script>
+import axios from 'axios';
     export default {
         name: 'Historial-page',
         data() {
         return {
+            reports: [],
             nodes: null,
-            rows: 5,
+            rows: 0,
             loading: false,
             totalRecords: 0
         }
+    },
+    created() {
+        axios.get('http://localhost:3000/reports')
+        .then(response => {
+            this.reports = response.data;
+        })
     },
     mounted() {
         this.loading = true;
 
         setTimeout(() => {
             this.loading = false;
+            this.rows = this.reports.length;
             this.nodes = this.loadNodes(0, this.rows);
-            this.totalRecords = 10;
+            this.totalRecords = this.reports.length;
         }, 1000);
     },
     methods: {
@@ -41,17 +50,17 @@
                     lazyNode.children = [
                         {
                             data: {
-                                name: 'Fecha de creación: ' + (Math.floor(Math.random() * 29)+1) + '/' + (Math.floor(Math.random() * 11)+1) + '/2022'
+                                name: 'Fecha de creación: ' + this.reports[node.key].date,
                             },
                         },
                         {
                             data: {
-                                name: 'Monto del leasing: S/' + Math.floor(Math.random() * 5000),
+                                name: 'Monto del leasing: S/' + this.reports[node.key].amount,
                             }
                         },
                         {
                             data: {
-                                name: 'Descripcion: ' + 'Aquí el usuario pone la descripción del leasing',
+                                name: 'Descripcion: ' + this.reports[node.key].description,
                             }
                         }
                     ];
@@ -85,7 +94,7 @@
                 let node = {
                     key: (first + i),
                     data: {
-                        name: 'Reporte ' + (first + i + 1),
+                        name: 'Reporte ' + this.reports[i].name
                     },
                     leaf: false
                 };
