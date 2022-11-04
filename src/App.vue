@@ -1,17 +1,12 @@
 <template >
-  <PaymentResultsComponent>
-    <button>
-
-    </button>
-  </PaymentResultsComponent>
+  <PaymentResultsComponent></PaymentResultsComponent>
 </template>
 
 <script>
 import PaymentResultsComponent from "./payment-results/pages/payment-results.component.vue";
-import Button from 'primevue/button';
 export default {
   name:"App",
-  components:{PaymentResultsComponent, Button}
+  components:{PaymentResultsComponent}
 }
 </script>
 

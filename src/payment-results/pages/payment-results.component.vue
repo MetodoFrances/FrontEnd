@@ -21,7 +21,7 @@
           <div class="linea"></div>
           <div class="col">
             <li>Valor de venta del activo</li>
-            <li>{{ saleValue }} </li>
+            <li>{{ loanDetails.saleValue }} </li>
           </div>
         
           <div class="linea"></div>
@@ -174,85 +174,76 @@
     name: "payment-results",
     data(){
       return{
-        initalCosts:new InitialCosts(250,150,80,100,50),
+        initialCosts: new InitialCosts(250,150,80,100,50),
         loanDetails: new LoanDetails(11800,3,30,0.012,0.001,0.030),
-        periodicCommission: new PeriodicCost(10,0.00030),
+        periodicCosts: new PeriodicCost(10,0.00030),
         oportunityCosts: new OportunityCosts(),
         seguroctriesgo: null,
+        leasingAmount: null,
         IGV: null,
 
         TCEAFB: 15.168, // como ponerle porciento %
         TCEAFN: -6.324,// como ponerle porciento %
         VANFB: 318.36,
         VANFN: 2504.49,
+        desembolso: null,
       }
     },
   
     methods:{
       //paymentscheduledata esto es jalarlo desde el compomente de payment.
       calcute(){
-      this.IGV =
-        (this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
-        this.loanDetails.IGVpercentage;
+        this.IGV =
+          (this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
+          this.loanDetails.IGVpercentage;
+        
+        //paymentscheduledata
+        this.loanDetails.saleValue = this.loanDetails.salePrice - this.IGV;
+        //paymentscheduledata
+        this.leasingAmount =
+          this.loanDetails.saleValue +
+          this.initialCosts.notarialCosts +
+          this.initialCosts.registrationCosts +
+          this.initialCosts.appraisal +
+          this.initialCosts.studyCommission +
+          this.initialCosts.activationFee;
+
+        //paymentscheduledata
+        this.TEPpercentage =
+          Math.pow(
+            1 + this.loanDetails.TEApercentage,
+            this.loanDetails.paymentFrecuencyInDays / this.loanDetails.daysPerYear
+          ) - 1;
+        //paymentscheduledata
+        this.installmentsPerYear=this.loanDetails.daysPerYear/this.loanDetails.paymentFrecuencyInDays;
+
+        //paymentscheduledata
+        this.totalInstallments=this.installmentsPerYear/this.loanDetails.daysPerYear;
+
+        //paymentscheduledata
+        this.riskInsurance =
+          (this.periodicCosts.riskInsurancePercentage *
+            this.loanDetails.salePrice) /
+          this.installmentsPerYear;
+
+        //this.intereses=;
+        //this.amorticap=;
+
+        this.seguroctriesgo=this.riskInsurance*this.totalInstallments;
+
+        this.comisionesp=this.periodicCosts.periodicCommission*this.totalInstallments;
       
       //paymentscheduledata
-      this.saleValue = this.loanDetails.salePrice - this.IGV;
+        this.buyback =
+          this.loanDetails.saleValue * this.loanDetails.buyBackPercentage;
 
-      //paymentscheduledata
-      this.leasingAmount =
-        this.loanDetails.saleValue +
-        this.initialCosts.notarialCosts +
-        this.initialCosts.registrationCosts +
-        this.initialCosts.appraisal +
-        this.initialCosts.studyCommission +
-        this.initialCosts.activationFee;
-
-      //paymentscheduledata
-      this.TEPpercentage =
-        Math.pow(
-          1 + this.loanDetails.TEApercentage,
-          this.loanDetails.paymentFrecuencyInDays / this.loanDetails.daysPerYear
-        ) - 1;
-      //paymentscheduledata
-      this.installmentsPerYear=this.loanDetails.daysPerYear/this.loanDetails.paymentFrecuencyInDays;
-
-      //paymentscheduledata
-      this.totalInstallments=this.installmentsPerYear/this.loanDetails.daysPerYear;
-
-      //paymentscheduledata
-      this.riskInsurance =
-        (this.periodicCosts.riskInsurancePercentage *
-          this.loanDetails.salePrice) /
-        this.installmentsPerYear;
-
-      //this.intereses=;
-      //this.amorticap=;
-
-      this.seguroctriesgo=this.riskInsurance*totalInstallments;
-
-      this.comisionesp=this.periodicCosts.periodicCommission*this.totalInstallments;
-      
-      //paymentscheduledata
-      this.buyback =
-        this.loanDetails.saleValue * this.loanDetails.buyBackPercentage;
-
-      this.desembolso=
-        this.seguroctriesgo+this.comisionesp+this.buyback; //+this.intereses+this.amorticap
+        this.desembolso=
+          this.seguroctriesgo+this.comisionesp+this.buyback; //+this.intereses+this.amorticap
 
       },
     },
     mounted(){
-     /* this.$root.$on("receive-leasing-data", (initialCosts, loanDetails, periodicCosts, TCEAFB, TCEAFN, VANFB, VANFN) => {
-        this.initialCosts = initialCosts;
-        this.loanDetails = loanDetails;
-        this.periodicCosts = periodicCosts;
-
-        this.TCEAFB = TCEAFB;
-        this.TCEAFN= TCEAFN;
-        this.VANFB= VANFB;
-        this.VANFN= VANFN;
-      }); 
-      */
+      this.calcute();
     }
   }
    </script>
