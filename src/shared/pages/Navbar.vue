@@ -13,7 +13,7 @@
       </ul>
 
       <ul class="sections-bottom">
-        <li class="menu-item" v-for="link in linksBottom" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item' + link.id">
+        <li class="menu-item" v-for="link in linksBottom" :key="link.id" @click="sliderIndicatorBottom(link.id)" :ref="'menu-item' + link.id">
           <RouterLink :to="link.path" class="no-underline" >
             <a href="#" class="menu-link" :class="link.id === selectedIndex ? 'active': null">
               <i class="menu-icon" :class="link.icon"></i>
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import authService from '../../security/services/auth.service';
 export default {
   data () {
     return {
@@ -68,16 +69,22 @@ export default {
         {
           id:1,
           text: "Salir",
-          path: '/',
+          path: '/sign-in',
           icon:'pi pi-fw pi-power-off',
         }
       ],
+      displayable: true
     };
 
   },
   methods: {
     sliderIndicator(id) {
 
+    },
+    sliderIndicatorBottom(id) {
+      // log out
+      authService.logout();
+      this.$emit("user-logged-out");
     }
   }
 }
