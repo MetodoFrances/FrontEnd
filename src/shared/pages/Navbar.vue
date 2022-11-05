@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <div id="nav">
+    <div class="nav-container">
+      <div class="nav">
       <ul class="sections-top">
         <li class="menu-item" v-for="link in linksTop" :key="link.id" @click="sliderIndicator(link.id)" :ref="'menu-item' + link.id">
           <RouterLink :to="link.path" class="no-underline" >
@@ -24,8 +24,10 @@
       </ul>
 
     </div>
-  </header>
-  <RouterView/>
+    <div class="nav__content">
+      <RouterView/>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -87,13 +89,18 @@ export default {
   padding:0;
   text-decoration: none;
 }
-#nav{
-  position:fixed;
-  width: 330px;
-  height:100%;
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+}
+.nav{
+  flex-basis: 15%;
   background:#FB8C00;
-  top:0;
-  left:0;
+}
+.nav__content {
+  flex-basis: 85%;
+  overflow: hidden;
 }
 
 .sections-top{
