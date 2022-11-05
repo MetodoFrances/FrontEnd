@@ -1,7 +1,7 @@
 export class DataTransferService {
     constructor() {
         this.user = null;
-        this.canDisplayNavigation = false;
+        this.userLogged = false;
     }
 }
 const $dataTransfer = new DataTransferService();

@@ -35,7 +35,7 @@ app.use(ToastService);
 
 app.component('Button',Button)
 app.component('Password',Password)
-app.component('TieredMenu',TieredMenu)
+app.component('TieredMenu',TieredMenu);
 app.component("pv-input-text",InputText);
 app.component("pv-button",Button);
 app.component("pv-toast",Toast);

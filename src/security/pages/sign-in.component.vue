@@ -22,6 +22,7 @@
 <script>
 import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import { data } from "../../shared/services/common-data.js";
 export default {
     name: "sign-in",
     setup: () => ({ v$: useVuelidate() }),
@@ -55,8 +56,14 @@ export default {
             this.$store.dispatch("auth/login",user)
                 .then( response => {
                     this.$dataTransfer.user = response.user;
+                    this.$dataTransfer.userLogged = true;
+                    this.$emit("user-logged");
                     this.$toast.add({severity: "success", summary: "User logged in succesfully", detail: "You are able to enjoy the app!!!", life: 3000})
-                })
+                  },
+                  rejected => {
+                    console.log(rejected);
+                  }
+                )
                 .catch( reason => {
                     console.error(reason);
                 })

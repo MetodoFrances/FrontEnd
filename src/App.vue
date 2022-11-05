@@ -1,22 +1,31 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Navbar from "@/shared/pages/Navbar.vue";
-</script>
-
 <template>
-  <RouterView v-if="userLogged === false"/>
-  <Navbar v-show="userLogged"></Navbar>
-  <p>{{msg}}</p>
+  <pv-toast/>
+  <RouterView v-show="isLogged === false" v-on:user-logged="userLoggedIn"/>
+  <Navbar v-show="isLogged"></Navbar>
 </template>
 
 <script>
+import Navbar from './shared/pages/Navbar.vue';
+
 export default {
+  components: {
+    Navbar
+  },
   data() {
     return {
-      userLogged: false
+      isLogged: false
+    }
+  },
+  methods: {
+    userLoggedIn() {
+      this.isLogged = true;
+    },
+    userLoggedOut() {
+      this.isLogged = false;
     }
   }
 }
+
 </script>
 
 <style scoped>
