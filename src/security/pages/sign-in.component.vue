@@ -79,6 +79,13 @@ export default {
                 name: "sign-up"
             })
         }
+    },
+    created() {
+      const user = JSON.parse(localStorage.getItem("auth"));
+      if(!user) return;
+      this.$router.push({
+        name: "leasing"
+      });
     }
 }
 </script>

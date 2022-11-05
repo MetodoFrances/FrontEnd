@@ -14,6 +14,11 @@ const routes = [
     path: "/sign-up",
     name: "sign-up",
     component: () => import("../security/pages/sign-up.component.vue")
+  },
+  {
+    path: "/leasing",
+    name: "leasing",
+    component: () => import("../payment-shedule/pages/payment-schedule.component.vue")
   }
 ];
 

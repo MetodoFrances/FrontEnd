@@ -25,6 +25,7 @@
 
     </div>
   </header>
+  <RouterView/>
 </template>
 
 <script>
@@ -45,19 +46,19 @@ export default {
         {
           id:2,
           text: " Leasing",
-          path: '/',
+          path: '/leasing',
           icon:'pi pi-fw pi-money-bill',
         },
         {
           id:3,
           text: " Reportes",
-          path: '/',
+          path: '/reports',
           icon:'pi pi-fw pi-file',
         },
         {
           id:4,
           text: "Configuración",
-          path: '/',
+          path: '/settings',
           icon:'pi pi-fw pi-wrench',
         },
       ],
@@ -71,6 +72,11 @@ export default {
       ],
     };
 
+  },
+  methods: {
+    sliderIndicator(id) {
+
+    }
   }
 }
 </script>
