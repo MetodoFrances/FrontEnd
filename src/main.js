@@ -14,11 +14,15 @@ import InputText from "primevue/inputtext";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Row from "primevue/row";
+import VueAxios from 'vue-axios';
+import axios from "axios";
+import TreeTable from 'primevue/treetable';
 import 'primeicons/primeicons.css';
 
 import 'primevue/resources/themes/saga-blue/theme.css';     //theme
 import 'primevue/resources/primevue.min.css';              //core css
 import 'primeicons/primeicons.css';
+
 
 const app = createApp(App);
 
@@ -28,6 +32,7 @@ app.use(PrimeVue, { ripple: true });
 app.use(router);
 app.use(Store);
 app.use(ToastService);
+app.use(VueAxios, axios);
 //app.use(createPinia());
 
 
@@ -39,5 +44,6 @@ app.component("pv-toast",Toast);
 app.component("pv-datatable", DataTable);
 app.component("pv-column", Column);
 app.component("pv-row", Row);
+app.component('TreeTable', TreeTable);
 
 app.mount("#app");

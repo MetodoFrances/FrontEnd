@@ -1,0 +1,74 @@
+{
+    "reports": [
+        {
+            "id": 1,
+            "name": "Leasing de vivienda",
+            "date": "21/10/2022",
+            "amount": 15630,
+            "description": "Este leasing es de una vivienda"
+        },
+        {
+            "id": 2,
+            "name": "Leasing de maquinaria",
+            "date": "22/10/2022",
+            "amount": 11220,
+            "description": "Este leasing es de una maquinaria"
+        },
+        {
+            "id": 3,
+            "name": "Leasing de auto",
+            "date": "23/10/2022",
+            "amount": 9450,
+            "description": "Este leasing es de un auto"
+        },
+        {
+            "id": 4,
+            "name": "Leasing de local",
+            "date": "24/10/2022",
+            "amount": 8050,
+            "description": "Este leasing es de un local para matrimonio"
+        },
+        {
+            "id": 5,
+            "name": "Leasing de computadora",
+            "date": "25/10/2022",
+            "amount": 7250,
+            "description": "Este leasing es de una computadora"
+        },
+        {
+            "id": 6,
+            "name": "Leasing de terreno",
+            "date": "26/10/2022",
+            "amount": 14600,
+            "description": "Este leasing es de un terreno"
+        },
+        {
+            "id": 7,
+            "name": "Leasing motoniveladora",
+            "date": "27/10/2022",
+            "amount": 24450,
+            "description": "Este leasing es de una motoniveladora"
+        },
+        {
+            "id": 8,
+            "name": "Leasing camioneta Toyota",
+            "date": "28/10/2022",
+            "amount": 9950,
+            "description": "Este leasing es de una camioneta Toyota"
+        },
+        {
+            "id": 9,
+            "name": "Leasing departamento",
+            "date": "29/10/2022",
+            "amount": 10450,
+            "description": "Este leasing es de un departamento en Miraflores"
+        },
+        {
+            "id": 10,
+            "name": "Leasing de excavadora",
+            "date": "30/10/2022",
+            "amount": 8250,
+            "description": "Este leasing es de una excavadora"
+        }
+    ]
+}
