@@ -85,13 +85,13 @@
         <div class="input-group justicy-content-between">
           <div class="col">
             <li>Intereses</li>
-            <li>{{ intereses }} </li>
+            <li>{{ sintereses }} </li>
           </div>
           
           <div class="linea"></div>
           <div class="col">
             <li>Amortización del capital</li>
-            <li>{{ amorticap }} </li>
+            <li>{{ samorticap }} </li>
           </div>
          
           <div class="linea"></div>
@@ -182,10 +182,13 @@
         leasingAmount: null,
         IGV: null,
 
-        TCEAFB: 15.168, // como ponerle porciento %
-        TCEAFN: -6.324,// como ponerle porciento %
-        VANFB: 318.36,
-        VANFN: 2504.49,
+        sintereses:null,
+        samorticap:null,
+        TCEAFB: 15.168, // traerlo del componente de paymente
+        TCEAFN: -6.324,// traerlo del componente de paymente
+        VANFB: 318.36, // traerlo del componente de paymente
+        VANFN: 2504.49,// traerlo del componente de paymente
+
         desembolso: null,
       }
     },
@@ -226,8 +229,8 @@
             this.loanDetails.salePrice) /
           this.installmentsPerYear).toFixed(2);
 
-        //this.intereses=; suma de los intereses llamarlo de payment
-        //this.amorticap=; suma de los amortización llamarlo de payment
+        //this.sintereses=; suma de los intereses llamarlo de payment 
+        //this.samorticap=; suma de los amortización llamarlo de payment 
 
         this.seguroctriesgo=(this.riskInsurance*this.totalInstallments).toFixed(2);
 
@@ -243,8 +246,14 @@
       },
     },
 
-    mounted(){ // pedir componente de payment-schedule TCEAFB / TCEAFN / VANFB / VANFN 
+    mounted(sintereses, samorticap, TCEAFB, TCEAFN, VANFB,  VANFN){ // pedir componente de payment-schedule TCEAFB / TCEAFN / VANFB / VANFN 
       this.calcute();
+      sintereses=this.sintereses;
+      samorticap=this.samorticap;
+      TCEAFB=this.TCEAFB;
+      TCEAFN=this.TCEAFN;
+      VANFB=this.VANFB;
+      VANFN=this. VANFN;
     }
   }
    </script>
