@@ -42,5 +42,13 @@
       "risk_insurance_percentage": 0.02,
       "id": 2
     }
+  ],
+  "settings": [
+    {
+      "user_id": 1,
+      "country": "China",
+      "language_name": "Ingles",
+      "id": 1
+    }
   ]
 }
