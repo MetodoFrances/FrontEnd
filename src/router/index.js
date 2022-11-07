@@ -19,6 +19,11 @@ const routes = [
     path: "/leasing",
     name: "leasing",
     component: () => import("../payment-shedule/pages/payment-schedule.component.vue")
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: () => import("../configuration/pages/configuration.component.vue")
   }
 ];
 
