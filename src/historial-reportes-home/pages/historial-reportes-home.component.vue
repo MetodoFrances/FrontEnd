@@ -4,7 +4,7 @@
         <div>
             <TreeTable :value="nodes" :lazy="true" :paginator="true" :rows="rows" :loading="loading"
             @nodeExpand="onExpand" @page="onPage" :totalRecords="totalRecords">
-            <Column-p field="name" header="Reportes" :expander="true"></Column-p>
+            <pv-column field="name" header="Reportes" :expander="true"></pv-column>
             </TreeTable>
         </div>
     </div>
