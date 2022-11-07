@@ -155,7 +155,7 @@ export default {
   width: 330px;
 }
 
-.menu-icon{
+.menu-icon {
   font-weight: bold;
   padding-right: 25px;
 }
