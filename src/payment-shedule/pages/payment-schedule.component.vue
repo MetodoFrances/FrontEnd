@@ -294,6 +294,7 @@ export default {
         });
         return;
       }
+      const user = JSON.parse(localStorage.getItem("auth"))
       this.paymentScheduleApiService.getLoans().then((response) => {
         const newLoan = {
           loan_issue_date: new Date().toISOString().slice(0,19),
@@ -309,6 +310,7 @@ export default {
           activation_commission: this.initialCosts.activationFee,
           periodic_commission: this.periodicCosts.periodicCommission,
           risk_insurance_percentage: this.periodicCosts.riskInsurancePercentage,
+          user_id: user.id
         };
         this.paymentScheduleApiService
           .createLoan(newLoan)

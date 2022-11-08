@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
-    "json:server":"json-server --watch server/db.json",
+    "json:server": "json-server --watch server/db.json",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
@@ -21,6 +21,7 @@
     "primeicons": "^5.0.0",
     "primevue": "^3.17.0",
     "vue": "^3.2.38",
+    "vue-axios": "^3.5.2",
     "vue-router": "^4.1.5",
     "vuex": "^4.0.2"
   },

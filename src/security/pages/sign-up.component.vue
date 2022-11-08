@@ -23,6 +23,8 @@
 <script>
 import { required, email } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
+import { Settings } from "../../shared/services/settings.js";
+import { ConfigurationApiService } from "../../configuration/service/configuration.service.js";
 
 export default {
     name: "sign-up",
@@ -35,7 +37,8 @@ export default {
             email: null,
             submitted: false,
             password: null,
-            repeatedPassword: null
+            repeatedPassword: null,
+            settingsService: new ConfigurationApiService()
         }
     },
     validations() {
@@ -90,6 +93,8 @@ export default {
                         setTimeout(() => {
 
                         },1000);
+                        const newSettings = new Settings(null,response.user.id,"Perú","Español");
+                        this.settingsService.saveSettings(newSettings.toObjectForCreating());
                         this.goToSignIn();
                     }
                 )

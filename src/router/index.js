@@ -16,19 +16,19 @@ const routes = [
     component: () => import("../security/pages/sign-up.component.vue")
   },
   {
-    path: "/leasing",
+    path: "/:id/leasing",
     name: "leasing",
     component: () => import("../payment-shedule/pages/payment-schedule.component.vue")
   },
   {
-    path: "/settings",
+    path: "/:id/settings",
     name: "settings",
     component: () => import("../configuration/pages/configuration.component.vue")
   },
   {
-    path: "/history",
+    path: "/:id/history",
     name: "history",
-    component: () => import("../historial-reportes-home/pages/historial-reportes-home.vue")
+    component: () => import("../historial-reportes-home/pages/historial-reportes-home.component.vue")
   }
 ];
 

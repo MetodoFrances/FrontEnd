@@ -8,7 +8,7 @@
     <div>
         <h3>País:</h3>
     <select v-model="currentSettings.country" class="select" id="selector_1">
-      <option value="Peru">Perú</option>
+      <option value="Perú">Perú</option>
       <option value="Estados Unidos">Estados Unidos</option>
       <option value="China">China</option>
       <option value="Brasil">Brasil</option>
@@ -19,9 +19,9 @@
         <h3>Idioma:</h3>
     <select v-model="currentSettings.languageName" class="select" id="selector_2">
       <option value="Español">Español</option>
-      <option value="Ingles">Inglés</option>
+      <option value="Inglés">Inglés</option>
       <option value="Chino">Chino</option>
-      <option value="Portugues">Portugués</option>
+      <option value="Portugués">Portugués</option>
     </select>
     </div>
 
@@ -61,7 +61,7 @@
           .then( response => {
             const data = response.data;
             this.currentSettings.setByObject(data);
-            console.log(data);
+            this.$toast.add({severity: "success", summary: "User settings saved succesfully", life: 3000})
           })
           .catch( reason => {
             console.error(reason);
@@ -69,7 +69,8 @@
       }
     },
     mounted() {
-      this.configurationApiService.getSettings()
+      const user = JSON.parse(localStorage.getItem("auth"));
+      this.configurationApiService.getByUserId(user.id)
       .then((response) =>  {
         const data = response.data[0];
         this.currentSettings.setByObject(data);

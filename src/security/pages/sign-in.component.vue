@@ -58,7 +58,7 @@ export default {
                     this.$dataTransfer.user = response.user;
                     this.$dataTransfer.userLogged = true;
                     this.$emit("user-logged");
-                    this.$toast.add({severity: "success", summary: "User logged in succesfully", detail: "You are able to enjoy the app!!!", life: 3000})
+                    this.$toast.add({severity: "success", summary: "User logged in succesfully", detail: "You are able to enjoy the app!!!", life: 3000});
                   },
                   rejected => {
                     console.log(rejected);
@@ -84,7 +84,8 @@ export default {
       const user = JSON.parse(localStorage.getItem("auth"));
       if(!user) return;
       this.$router.push({
-        name: "leasing"
+        name: "leasing",
+        params: { id: user.id }
       });
     }
 }

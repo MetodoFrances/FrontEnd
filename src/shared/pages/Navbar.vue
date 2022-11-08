@@ -86,6 +86,35 @@ export default {
       authService.logout();
       this.$emit("user-logged-out");
     }
+  },
+  mounted() {
+    const user = JSON.parse(localStorage.getItem("auth"));
+    this.linksTop = [
+        {
+          id:1,
+          icon:'pi pi-fw pi-home',
+          text: " Inicio",
+          path: '/home',
+        },
+        {
+          id:2,
+          text: " Leasing",
+          path: `/${user.id}/leasing`,
+          icon:'pi pi-fw pi-money-bill',
+        },
+        {
+          id:3,
+          text: " Reportes",
+          path: `/${user.id}/history`,
+          icon:'pi pi-fw pi-file',
+        },
+        {
+          id:4,
+          text: "Configuración",
+          path: `/${user.id}/settings`,
+          icon:'pi pi-fw pi-wrench',
+        },
+    ];
   }
 }
 </script>

@@ -8,6 +8,10 @@ export class ConfigurationApiService {
         return http.get(this._endpoint);
     }
 
+    getByUserId(userId) {
+        return http.get(`${this._endpoint}?user_id=${userId}`)
+    }
+
     saveSettings(settings){
         return http.post(this._endpoint,settings);
     }
