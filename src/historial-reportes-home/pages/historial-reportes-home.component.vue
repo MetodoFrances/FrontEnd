@@ -16,6 +16,7 @@ import axios from 'axios';
         name: 'Historial-page',
         data() {
         return {
+            logged_user: 1,
             loans: [],
             nodes: null,
             rows: 0,
@@ -24,7 +25,11 @@ import axios from 'axios';
         }
     },
     created() {
-        axios.get('http://localhost:3000/loans')
+        axios.get('http://localhost:3000/loans', {
+            params: {
+                users_user_id: this.logged_user
+            }
+        })
         .then(response => {
             this.loans = response.data;
         })
