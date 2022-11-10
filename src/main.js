@@ -17,6 +17,7 @@ import Row from "primevue/row";
 import VueAxios from 'vue-axios';
 import axios from "axios";
 import TreeTable from 'primevue/treetable';
+import Dropdown from "primevue/dropdown";
 import 'primeicons/primeicons.css';
 
 import 'primevue/resources/themes/saga-blue/theme.css';     //theme
@@ -45,5 +46,6 @@ app.component("pv-datatable", DataTable);
 app.component("pv-column", Column);
 app.component("pv-row", Row);
 app.component('TreeTable', TreeTable);
+app.component("pv-dropdown",Dropdown);
 
 app.mount("#app");

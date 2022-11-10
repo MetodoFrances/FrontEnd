@@ -229,7 +229,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.paymentSchedule);
+    console.log(this.loanDetails.paymentFrecuencyInDays);
   },
   created() {
     console.log(

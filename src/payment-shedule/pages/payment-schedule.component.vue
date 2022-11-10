@@ -30,13 +30,12 @@
           class="label"
           >Payment frecuency in days</label
         >
-        <pv-input-text
-          id="paymentFrecuencyInDays"
-          type="number"
+        <pv-dropdown
           v-model="loanDetails.paymentFrecuencyInDays"
-          placeholder="Payment frecuency in days"
-          min="1"
-        ></pv-input-text>
+          :options="paymentFrecuencyOptions"
+          optionLabel="name"
+          placeholder="Select payment frecuency"
+        ></pv-dropdown>
       </div>
       <div class="inputsContainer__content">
         <label for="daysPerYear" class="label">Days Per Year</label>
@@ -254,6 +253,13 @@ export default {
       graceTypePeriods: 0,
       displayable: false,
       paymentScheduleApiService: new PaymentScheduleApiService(),
+      paymentFrecuencyOptions: [
+        { name: "15", code: 30},
+        { name: "30", code: 30},
+        { name: "120", code: 30},
+        { name: "180", code: 30},
+        { name: "360", code: 30}
+      ]
     };
   },
   methods: {
@@ -262,6 +268,7 @@ export default {
       this.initialCosts.parseFloatAll();
       this.periodicCosts.parseFloatAll();
       this.loanDetails.parseFloatAll();
+      console.log(this.loanDetails.paymentFrecuencyInDays);
       if (
         !(
           this.initialCosts.isValid() &&

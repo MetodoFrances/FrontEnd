@@ -19,36 +19,21 @@
   ],
   "loans": [
     {
-      "loan_issue_date": "2022-10-25T23:47:07",
-      "sale_price": null,
-      "loan_time": null,
-      "payment_frecuency": null,
-      "buyback_percentage": null,
-      "currency_id": 1,
-      "notarial_cost": null,
-      "registration_cost": null,
-      "appraisal": null,
-      "study_commission": null,
-      "activation_commission": null,
-      "periodic_commission": null,
-      "risk_insurance_percentage": null,
-      "id": 1
-    },
-    {
-      "loan_issue_date": "2022-10-30T01:28:48",
-      "sale_price": 11796,
+      "loan_issue_date": "2022-11-10T02:36:16",
+      "sale_price": 11800,
       "loan_time": 3,
       "payment_frecuency": 30,
-      "buyback_percentage": 0.05,
+      "buyback_percentage": 0.01,
       "currency_id": 1,
-      "notarial_cost": 120.5,
-      "registration_cost": 120,
-      "appraisal": 50,
-      "study_commission": 70,
-      "activation_commission": 50,
-      "periodic_commission": 46.7,
-      "risk_insurance_percentage": 0.02,
-      "id": 2
+      "notarial_cost": 10,
+      "registration_cost": 10,
+      "appraisal": 10,
+      "study_commission": 10,
+      "activation_commission": 10,
+      "periodic_commission": 10,
+      "risk_insurance_percentage": 0.003,
+      "user_id": 1,
+      "id": 1
     }
   ],
   "settings": [

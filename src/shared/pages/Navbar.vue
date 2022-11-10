@@ -147,9 +147,6 @@ export default {
   flex-direction: column;
 }
 
-
-
-
 /* li - ok*/
 .menu-item{
   display: inline-flex;
@@ -168,16 +165,18 @@ export default {
   justify-content: left;
   color: black;
   text-decoration: none;
+  transition: all 300ms;
 }
 .menu-link:hover, .menu-link.active{
   color: white ;
   background-color: #625c5c;
-  width: 330px;
+  display: block;
+  width: 12rem;
 }
 
 .menu-icon {
   font-weight: bold;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 @media (max-width: 900px) {

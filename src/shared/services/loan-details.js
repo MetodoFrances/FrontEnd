@@ -31,7 +31,7 @@ export class LoanDetails {
   parseFloatAll() {
     this.salePrice = parseFloat(this.salePrice);
     this.years = parseFloat(this.years);
-    this.paymentFrecuencyInDays = parseFloat(this.paymentFrecuencyInDays);
+    this.paymentFrecuencyInDays = parseFloat(this.paymentFrecuencyInDays.code);
     this.TEApercentage = parseFloat(this.TEApercentage);
     this.buyBackPercentage = parseFloat(this.buyBackPercentage);
   }
