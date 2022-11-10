@@ -130,41 +130,31 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .nav{
-  flex-basis: 10%;
   background:#FB8C00;
+  flex-basis: 15%;
 }
 .nav__content {
-  flex-basis: 70%;
+  flex-basis: 75%;
   overflow: hidden;
 }
 
 .sections-top{
-  width: 350px;
-  margin: 150px auto;
-}
-.sections-bottom {
-  margin: 350px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-@media screen and (max-height: 800px) {
-  .sections-top {
-    margin: 150px auto;
-  }
-  .sections-bottom {
-    margin: 150px auto;
-  }
-}
 
 
 
 /* li - ok*/
 .menu-item{
-  top:100px;
   display: inline-flex;
   align-items: center;
-  width: 100%;
+  width: 10rem;
   white-space: nowrap;
 }
 
@@ -187,16 +177,23 @@ export default {
 
 .menu-icon {
   font-weight: bold;
-  padding-right: 25px;
+  padding-right: 5px;
 }
 
-@media screen and (max-width: 880px) {
-  #nav{
-    width: 35%;
+@media (max-width: 900px) {
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: unset;
   }
-  .menu-link:hover, .menu-link.active{
-    color: white ;
-    background: none;
+  .sections-top{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
+
 </style>
