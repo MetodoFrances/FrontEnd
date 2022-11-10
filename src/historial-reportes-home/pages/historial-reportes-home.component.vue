@@ -1,10 +1,10 @@
 <template>
     <div class="historial">
-        <h2 class="titulo-home"><b>HISTORIAL DE REPORTES</b></h2>
+        <h2 class="titulo-home"><b>LISTA DE LOANS</b></h2>
         <div>
             <TreeTable :value="nodes" :lazy="true" :paginator="true" :rows="rows" :loading="loading"
             @nodeExpand="onExpand" @page="onPage" :totalRecords="totalRecords">
-            <pv-column field="name" header="Reportes" :expander="true"></pv-column>
+            <pv-column field="name" header="Loans" :expander="true"></pv-column>
             </TreeTable>
         </div>
     </div>
@@ -16,7 +16,7 @@ import axios from 'axios';
         name: 'Historial-page',
         data() {
         return {
-            reports: [],
+            loans: [],
             nodes: null,
             rows: 0,
             loading: false,
@@ -24,9 +24,9 @@ import axios from 'axios';
         }
     },
     created() {
-        axios.get('http://localhost:3000/reports')
+        axios.get('http://localhost:3000/loans')
         .then(response => {
-            this.reports = response.data;
+            this.loans = response.data;
         })
     },
     mounted() {
@@ -34,9 +34,9 @@ import axios from 'axios';
 
         setTimeout(() => {
             this.loading = false;
-            this.rows = this.reports.length;
+            this.rows = this.loans.length;
             this.nodes = this.loadNodes(0, this.rows);
-            this.totalRecords = this.reports.length;
+            this.totalRecords = this.loans.length;
         }, 1000);
     },
     methods: {
@@ -50,17 +50,22 @@ import axios from 'axios';
                     lazyNode.children = [
                         {
                             data: {
-                                name: 'Fecha de creación: ' + this.reports[node.key].date,
+                                name: 'Fecha de creación: ' + this.loans[node.key].loan_issue_date,
                             },
                         },
                         {
                             data: {
-                                name: 'Monto del leasing: S/' + this.reports[node.key].amount,
+                                name: 'Monto del leasing: S/' + this.loans[node.key].leasingAmount,
                             }
                         },
                         {
                             data: {
-                                name: 'Descripcion: ' + this.reports[node.key].description,
+                                name: 'Número de cuotas: ' + this.loans[node.key].totalInstallments,
+                            }
+                        },
+                        {
+                            data: {
+                                name: 'Duración: ' + this.loans[node.key].loan_time,
                             }
                         }
                     ];
@@ -94,7 +99,7 @@ import axios from 'axios';
                 let node = {
                     key: (first + i),
                     data: {
-                        name: 'Reporte ' + this.reports[i].name
+                        name: 'Identificador: ' + this.loans[i].loan_name
                     },
                     leaf: false
                 };
