@@ -27,7 +27,7 @@ import axios from 'axios';
     created() {
         axios.get('http://localhost:3000/loans', {
             params: {
-                users_user_id: this.logged_user
+                user_id: this.logged_user
             }
         })
         .then(response => {
@@ -60,12 +60,12 @@ import axios from 'axios';
                         },
                         {
                             data: {
-                                name: 'Monto del leasing: S/' + this.loans[node.key].leasingAmount,
+                                name: 'Precio de venta: S/' + this.loans[node.key].sale_price,
                             }
                         },
                         {
                             data: {
-                                name: 'Número de cuotas: ' + this.loans[node.key].totalInstallments,
+                                name: 'Número de cuotas: ' + (360/this.loans[node.key].payment_frecuency)*this.loans[node.key].loan_time,
                             }
                         },
                         {
