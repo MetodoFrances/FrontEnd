@@ -2,20 +2,20 @@
     <div class="sign-up-container">
         <h1 class="sign-up__title">Registro</h1>
         <div class="sign-up-container-input">
+          <div class="sign-up__banner-img-container">
+            <img class="sign-up__banner-img" src="../../assets/Leasingfy-img-main-register.png" alt="Leasingfy Background Image">
+          </div>
           <form class="sign-up__form" @submit.prevent="handleSubmit(!v$.$invalid)">
             <pv-input-text class="sign-up__input" type="text" v-model="v$.name.$model" placeholder="Nombre"></pv-input-text><nav></nav>
             <pv-input-text class="sign-up__input" type="text" v-model="v$.surname.$model" placeholder="Apellidos"></pv-input-text><nav></nav>
             <pv-input-text class="sign-up__input" type="text" v-model="v$.ruc.$model" placeholder="RUC"></pv-input-text><nav></nav>
             <pv-input-text class="sign-up__input" type="text" v-model="v$.email.$model" placeholder="Correo electrónico"></pv-input-text><nav></nav>
-            <pv-input-text class="sign-up__input" type="text" v-model="v$.password.$model" placeholder="Contraseña"></pv-input-text><nav></nav>
-            <pv-input-text class="sign-up__input" type="text" v-model="v$.repeatedPassword.$model" placeholder="Confirmar contraseña"></pv-input-text><nav></nav>
+            <Password inputClass="sign-up__input" v-model="v$.password.$model" placeholder="Contraseña"></Password><nav></nav>
+            <Password inputClass="sign-up__input" v-model="v$.repeatedPassword.$model" placeholder="Confirmar contraseña"></Password><nav></nav>
             <pv-button class="sign-up__btn-register" label="Registrarse" type="submit"></pv-button>
             <p class="sign-up__p-register">¿Ya te registraste?
             <router-link class="no-underline" to="/sign-in">Iniciar Sesión</router-link></p>
           </form>
-        </div>
-        <div class="sign-up__banner-img-container">
-          <img class="sign-up__banner-img" src="../../assets/Leasingfy-img-main-register.png" alt="Leasingfy Background Image">
         </div>
     </div>
 </template>
@@ -129,11 +129,10 @@ export default {
   font-size: 35px;
 }
 .sign-up__form{
-  width: 60%;
+  width: 100%;
   max-width: 550px;
   font-size: 50px;
   text-align: center;
-  margin-left:400px;
 }
 .sign-up__input{
   border:white;
@@ -159,24 +158,25 @@ export default {
   font-size: 15px;
 }
 
-
-.sign-up__banner-img-container{
-  margin:-30rem 55%;
-
+.sign-up-container-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
-.sign-up__banner-img{
-  width: 600px;
-  height: 400px;
 
-}
-@media (max-width: 1600px){
+@media (max-width: 650px) {
+  .sign-up__banner-img-container{
+    padding: 2rem;
+  }
   .sign-up__banner-img{
-    width: 500px;
-    height: 300px;
-    margin:-15rem 1rem;
+    width: 30rem;
+    height: 20rem;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
   }
   .sign-up__form{
-    margin:6rem 1rem;
+    padding: 2rem;
   }
 }
 </style>

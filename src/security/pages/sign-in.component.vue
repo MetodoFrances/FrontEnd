@@ -1,20 +1,18 @@
 <template>
-    <div class="sign-in-container">
-        <div class="sign-in-container-left">
-          <h1 class="sign-in__title">INICIO DE SESION</h1>
-          <img class="sign-in__img" src="../../assets/leasingfy-icon.png" alt="Leasingfy Icon">
-          <div class="sign-in-container-input">
-            <form class="sign-in__form" @submit.prevent="handleSubmit(!v$.$invalid)">
+    <div class="sign-in-container-left">
+        <h1 class="sign-in__title">INICIO DE SESION</h1>
+        <img class="sign-in__img" src="../../assets/leasingfy-icon.png" alt="Leasingfy Icon">
+        <div class="sign-in-container-input">
+          <div class="sign-in__banner-img-container">
+            <img class="sign-in__banner-img" src="../../assets/leasingfy-home-backround-image.png" alt="Leasingfy Background Image">
+          </div>
+          <form class="sign-in__form" @submit.prevent="handleSubmit(!v$.$invalid)">
               <pv-input-text class="sign-in__input" type="text" v-model="v$.email.$model" placeholder="Correo"></pv-input-text><nav></nav>
-              <pv-input-text class="sign-in__input" type="text" v-model="v$.password.$model" placeholder="Contraseña"></pv-input-text>
+              <Password inputClass="sign-in__input" :feedback="false" v-model="v$.password.$model" placeholder="Contraseña"></Password>
               <h2 class="sign-in__subtitle">¿Olvidaste tu contraseña?</h2>
               <pv-button class="sign-in__btn" label="Iniciar Sesión" type="submit"></pv-button>
               <h2 class="sign-in__subtitle">¿No tienes una cuenta? <pv-button  class="sign-in__btn__register" label="Regístrate Aquí" @click="goToRegister"></pv-button></h2>
-            </form>
-          </div>
-        </div>
-        <div class="sign-in__banner-img-container">
-          <img class="sign-in__banner-img" src="../../assets/leasingfy-home-backround-image.png" alt="Leasingfy Background Image">
+          </form>
         </div>
     </div>
 </template>
@@ -22,7 +20,6 @@
 <script>
 import { required } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
-import { data } from "../../shared/services/common-data.js";
 export default {
     name: "sign-in",
     setup: () => ({ v$: useVuelidate() }),
@@ -93,40 +90,34 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
-*{
-  font-family: 'Roboto Slab', serif;
-  margin:0;
-  padding:0;
-}
 .sign-in-container-left{
-  width: 60%;
-  max-width: 550px;
+  font-family: 'Roboto Slab', serif;
+  width: 100%;
   font-size: 50px;
-  line-height: 70px;
-  text-align: center;
-  margin-left:200px;
-  margin-top: 180px;
 }
-.sign-in-container-left>div{
-  display: block;
-  padding:20px;
+.sign-in-container-input {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .sign-in__title{
   font-size: 35px;
-  margin-left: 2%;
+  text-align: center;
   color:#FB8C00
 }
 .sign-in__subtitle{
   color: rgba(176, 176, 176, 0.83);
   font-size: 15px;
   font-weight: normal;
-  margin-bottom: -20px;
 }
 .sign-in__btn{
   background:#FB8C00;
   border-color: #FB8C00;
   width : 140px;
   height: 35px;
+}
+.sign-in__form {
+  text-align: center;
 }
 .sign-in__btn:hover {
   background: #fb8c00;
@@ -138,8 +129,13 @@ export default {
   width: 220px;
 }
 .sign-in__img{
+  position: relative;
+  display: block;
   width: 150px;
   height: 150px;
+  left: 50%;
+  padding: 1.5rem;
+  transform: translateX(-50%);
 }
 .sign-in__btn__register{
   background:none;
@@ -153,29 +149,21 @@ export default {
   color: #5AB1F6;
   border-color: white;
 }
-.sign-in__banner-img-container{
-  margin:-30rem 55%;
-
-}
 .sign-in__banner-img{
-  width: 600px;
-  height: 400px;
-
+  display: block;
+  width: 100%;
+  height: 20rem;
 }
-@media (max-width: 1392px){
+
+@media (max-width: 580px) {
   .sign-in__banner-img{
-    width: 400px;
-    height: 300px;
-    margin:-20rem 1rem;
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
   }
-  .sign-in-container-left{
-    width: 60%;
-    max-width: 550px;
-    font-size: 50px;
-    line-height: 70px;
-    text-align: center;
-    margin-left:10px;
-    margin-top: 180px;
+  .sign-in__banner-img-container {
+    padding: 2rem;
   }
 }
 

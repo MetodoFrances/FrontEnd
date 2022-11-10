@@ -129,13 +129,14 @@ export default {
 .nav-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .nav{
-  flex-basis: 15%;
+  flex-basis: 10%;
   background:#FB8C00;
 }
 .nav__content {
-  flex-basis: 85%;
+  flex-basis: 70%;
   overflow: hidden;
 }
 
