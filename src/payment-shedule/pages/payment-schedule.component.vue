@@ -301,7 +301,6 @@ export default {
         });
         return;
       }
-      const user = JSON.parse(localStorage.getItem("auth"))
       this.paymentScheduleApiService.getLoans().then((response) => {
         const newLoan = {
           loan_issue_date: new Date().toISOString().slice(0,19),
@@ -317,7 +316,7 @@ export default {
           activation_commission: this.initialCosts.activationFee,
           periodic_commission: this.periodicCosts.periodicCommission,
           risk_insurance_percentage: this.periodicCosts.riskInsurancePercentage,
-          user_id: user.id
+          user_id: this.$dataTransfer.user.id
         };
         this.paymentScheduleApiService
           .createLoan(newLoan)
@@ -341,12 +340,11 @@ export default {
       });
     },
     setLeasingResults() {
-      this.$root.$emit(
-        "receive-leasing-data",
-        this.initialCosts,
-        this.periodicCosts,
-        this.loanDetails
-      );
+      if(!(this.initialCosts.isValid() &&
+          this.periodicCosts.isValid() &&
+          this.loanDetails.isValid())) return;
+      this.$dataTransfer.data = [this.initialCosts, this.periodicCosts, this.loanDetails];
+      // Go to set Leasing Results
     },
   },
 };
