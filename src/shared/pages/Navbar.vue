@@ -88,7 +88,7 @@ export default {
     }
   },
   mounted() {
-    const user = JSON.parse(localStorage.getItem("auth"));
+    const user = this.$dataTransfer.user;
     this.linksTop = [
         {
           id:1,

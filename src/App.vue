@@ -21,6 +21,8 @@ export default {
     },
     userLoggedOut() {
       this.isLogged = false;
+      this.$dataTransfer.user = null;
+      this.$dataTransfer.userLogged = false;
       this.$router.push({
         name: "sign-in"
       })
@@ -30,6 +32,8 @@ export default {
     const user = JSON.parse(localStorage.getItem("auth"));
     if(user) {
       this.isLogged = true;
+      this.$dataTransfer.user = user;
+      this.$dataTransfer.userLogged = true;
     }
   }
 }

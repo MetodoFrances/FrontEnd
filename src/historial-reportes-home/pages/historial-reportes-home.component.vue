@@ -25,9 +25,11 @@ import axios from 'axios';
         }
     },
     created() {
+        // this.$route.params.id;
+        // this.$dataTransfer.user.id;
         axios.get('http://localhost:3000/loans', {
             params: {
-                user_id: this.logged_user
+                user_id: this.$route.params.id
             }
         })
         .then(response => {

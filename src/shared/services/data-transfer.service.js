@@ -1,4 +1,4 @@
-export class DataTransferService {
+class DataTransferService {
     constructor() {
         this.user = null;
         this.userLogged = false;
