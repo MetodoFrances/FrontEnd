@@ -18,46 +18,12 @@
     }
   ],
   "loans": [
-    {
-      "loan_issue_date": "2022-11-10T02:36:16",
-      "sale_price": 11800,
-      "loan_time": 3,
-      "payment_frecuency": 30,
-      "buyback_percentage": 0.01,
-      "currency_id": 1,
-      "notarial_cost": 10,
-      "registration_cost": 10,
-      "appraisal": 10,
-      "study_commission": 10,
-      "activation_commission": 10,
-      "periodic_commission": 10,
-      "risk_insurance_percentage": 0.003,
-      "user_id": 1,
-      "id": 1
-    },
-    {
-      "loan_issue_date": "2022-11-11T03:25:04",
-      "sale_price": 11800,
-      "loan_time": 1,
-      "payment_frecuency": 30,
-      "buyback_percentage": 0.4,
-      "currency_id": 1,
-      "notarial_cost": 120,
-      "registration_cost": 130,
-      "appraisal": 140,
-      "study_commission": 137.78,
-      "activation_commission": 189.9,
-      "periodic_commission": 30.5,
-      "risk_insurance_percentage": 0.023,
-      "user_id": 1,
-      "id": 2
-    }
   ],
   "settings": [
     {
       "user_id": 1,
       "country": "Perú",
-      "language_name": "Inglés",
+      "language_name": "Español",
       "id": 1
     },
     {

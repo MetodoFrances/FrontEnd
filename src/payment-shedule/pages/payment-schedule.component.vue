@@ -316,6 +316,7 @@ export default {
           activation_commission: this.initialCosts.activationFee,
           periodic_commission: this.periodicCosts.periodicCommission,
           risk_insurance_percentage: this.periodicCosts.riskInsurancePercentage,
+          TEA_percetage: this.loanDetails.TEApercentage,
           user_id: this.$dataTransfer.user.id
         };
         this.paymentScheduleApiService

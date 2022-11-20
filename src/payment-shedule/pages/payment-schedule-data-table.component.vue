@@ -33,6 +33,7 @@ import { InitialCosts } from "../../shared/services/inital-costs.js";
 import { LoanDetails } from "../../shared/services/loan-details.js";
 import { PeriodicCosts } from "../../shared/services/periodic-costs.js";
 import { OpportunityCosts } from "../../shared/services/opportunity-costs.js";
+import { noopDirectiveTransform } from "@vue/compiler-core";
 
 export default {
   name: "payment-schedule-data-table",
@@ -179,6 +180,8 @@ export default {
           (1 - Math.pow(1 + this.TEPpercentage, remainingFees * -1));
       }
 
+      this.flows.push(netCashFlow);
+
       this.approxTir += netCashFlow;
     },
     validateTypeOfGracePeriod(arr, leasing) {
@@ -194,10 +197,20 @@ export default {
     },
     PaymentScheduleReCalculation() {},
     calculateTIR() {
-      let van = 0;
-      for(let i = this.approxTir; van > 0;++i) {
-
+      let van = Infinity;
+      let tir;
+      for(let i = this.approxTir; van > 0; i += 0.001) {
+        van = this.calculateVan(i);
+        tir = i;
       }
+      return tir;
+    },
+    calculateVan(tea) {
+      let van = 0.00;
+      for(let i = 0; i < this.flows.length; ++i)
+        van += (this.flows[i]) / Math.pow(1 + tea,i + 1);
+      van -= this.loanDetails.saleValue;
+      return van;
     }
   },
   computed: {
@@ -225,21 +238,12 @@ export default {
         this.approxTir /= this.loanDetails.salePrice;
         --this.approxTir;
         this.approxTir /= this.totalInstallments;
+        console.log(this.approxTir)
+        this.$dataTransfer.van = this.calculateVan(this.TEPpercentage);
+        this.$dataTransfer.tir = this.calculateTIR();
       return arr;
     },
-  },
-  mounted() {
-    console.log(this.loanDetails.paymentFrecuencyInDays);
-  },
-  created() {
-    console.log(
-      this.initialCosts,
-      this.loanDetails,
-      this.periodicCosts,
-      this.graceType,
-      this.graceTypePeriods
-    );
-  },
+  }
 };
 </script>
 
