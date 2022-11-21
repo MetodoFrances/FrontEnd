@@ -3,8 +3,12 @@ class DataTransferService {
         this.user = null;
         this.userLogged = false;
         this.data = [];
-        this.tir = null;
-        this.van = null;
+        this.tirN = null;
+        this.vanN = null;
+        this.tirB = null;
+        this.vanB = null;
+        this.totalInterest = null;
+        this.totalAmortization = null;
     }
 }
 const $dataTransfer = new DataTransferService();

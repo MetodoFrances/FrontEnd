@@ -9,7 +9,7 @@
           <form class="sign-in__form" @submit.prevent="handleSubmit(!v$.$invalid)">
               <pv-input-text class="sign-in__input" type="text" v-model="v$.email.$model" placeholder="Correo"></pv-input-text><nav></nav>
               <Password inputClass="sign-in__input" :feedback="false" v-model="v$.password.$model" placeholder="Contraseña"></Password>
-              <h2 class="sign-in__subtitle">¿Olvidaste tu contraseña?</h2>
+              <pv-button label="¿Olvidaste tu contraseña?" @click="goToRecoverPassword"/>
               <pv-button class="sign-in__btn" label="Iniciar Sesión" type="submit"></pv-button>
               <h2 class="sign-in__subtitle">¿No tienes una cuenta? <pv-button  class="sign-in__btn__register" label="Regístrate Aquí" @click="goToRegister"></pv-button></h2>
           </form>
@@ -75,6 +75,12 @@ export default {
             this.$router.push({
                 name: "sign-up"
             })
+        },
+        goToRecoverPassword() {
+          console.log("to recover");
+          this.$router.push({
+            name: "recover-password"
+          })
         }
     },
     created() {

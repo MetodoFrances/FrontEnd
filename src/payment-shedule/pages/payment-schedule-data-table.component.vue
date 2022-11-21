@@ -74,8 +74,12 @@ export default {
         { field: "TCEAFlow", header: "TCEA_Flow" },
       ],
       editingRows: [],  
-      approxTir: 0.00,
-      flows: []
+      approxTirN: 0.00,
+      approxTirB: 0.00,
+      netFlows: [],
+      grossFlows: [],
+      totalInterest: 0.00,
+      totalAmortization: 0.00
     };
   },
   props: {
@@ -180,9 +184,13 @@ export default {
           (1 - Math.pow(1 + this.TEPpercentage, remainingFees * -1));
       }
 
-      this.flows.push(netCashFlow);
+      this.netFlows.push(netCashFlow);
+      this.grossFlows.push(grossCashFlow);
 
-      this.approxTir += netCashFlow;
+      this.approxTirN += netCashFlow;
+      this.approxTirB += grossCashFlow;
+      this.totalInterest += interest;
+      this.totalAmortization += amortization;
     },
     validateTypeOfGracePeriod(arr, leasing) {
       for (
@@ -196,19 +204,35 @@ export default {
       console.log(e.data);
     },
     PaymentScheduleReCalculation() {},
-    calculateTIR() {
+    calculateTIRB() {
       let van = Infinity;
       let tir;
-      for(let i = this.approxTir; van > 0; i += 0.001) {
-        van = this.calculateVan(i);
+      for(let i = this.approxTirB; van > 0; i += 0.001){
+        van = this.calculateVanB(i);
         tir = i;
       }
       return tir;
     },
-    calculateVan(tea) {
+    calculateTIRN() {
+      let van = Infinity;
+      let tir;
+      for(let i = this.approxTirN; van > 0; i += 0.001) {
+        van = this.calculateVanN(i);
+        tir = i;
+      }
+      return tir;
+    },
+    calculateVanN(tea) {
       let van = 0.00;
-      for(let i = 0; i < this.flows.length; ++i)
-        van += (this.flows[i]) / Math.pow(1 + tea,i + 1);
+      for(let i = 0; i < this.netFlows.length; ++i)
+        van += (this.netFlows[i]) / Math.pow(1 + tea,i + 1);
+      van -= this.loanDetails.saleValue;
+      return van;
+    },
+    calculateVanB(tea) {
+      let van = 0.00;
+      for(let i = 0; i < this.grossFlows.length; ++i)
+        van += (this.grossFlows[i]) / Math.pow(1 + tea,i + 1);
       van -= this.loanDetails.saleValue;
       return van;
     }
@@ -235,12 +259,16 @@ export default {
         this.calculatePaymentSchedule(arr, leasing, "None");
       
         // Calculating approx TIR
-        this.approxTir /= this.loanDetails.salePrice;
-        --this.approxTir;
-        this.approxTir /= this.totalInstallments;
-        console.log(this.approxTir)
-        this.$dataTransfer.van = this.calculateVan(this.TEPpercentage);
-        this.$dataTransfer.tir = this.calculateTIR();
+        this.approxTirN /= this.loanDetails.salePrice;
+        --this.approxTirN;
+        this.approxTirN /= this.totalInstallments;
+        console.log(this.approxTir);
+        this.$dataTransfer.vanN = this.calculateVanN(this.TEPpercentage);
+        this.$dataTransfer.tirN = this.calculateTIRN();
+        this.$dataTransfer.vanB = this.calculateVanB();
+        this.$dataTransfer.tirB = this.calculateTIRB();
+        this.$dataTransfer.totalInterest = parseFloat(this.totalInterest.toFixed(2));
+        this.$dataTransfer.totalAmortization = parseFloat(this.totalAmortization.toFixed(2));
       return arr;
     },
   }

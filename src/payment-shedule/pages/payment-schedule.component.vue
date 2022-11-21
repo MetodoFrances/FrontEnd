@@ -345,7 +345,10 @@ export default {
           this.periodicCosts.isValid() &&
           this.loanDetails.isValid())) return;
       this.$dataTransfer.data = [this.initialCosts, this.periodicCosts, this.loanDetails];
-      // Go to set Leasing Results
+      this.$router.push({
+        name: "leasing results",
+        props: { id: this.$dataTransfer.user.id }
+      })
     },
   },
 };

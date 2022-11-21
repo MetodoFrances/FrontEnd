@@ -16,6 +16,11 @@ const routes = [
     component: () => import("../security/pages/sign-up.component.vue")
   },
   {
+    path: "/recover-password",
+    name: "recover-password",
+    component: () => import("../security/pages/password-recover.component.vue")
+  },
+  {
     path: "/:id/leasing",
     name: "leasing",
     component: () => import("../payment-shedule/pages/payment-schedule.component.vue")
@@ -29,6 +34,16 @@ const routes = [
     path: "/:id/history",
     name: "history",
     component: () => import("../historial-reportes-home/pages/historial-reportes-home.component.vue")
+  },
+  {
+    path: "/:id/leasing-results",
+    name: "leasing results",
+    component: () => import("../payment-results/pages/payment-results.component.vue")
+  },
+  {
+    path: "/:id/home",
+    name: "home",
+    component: () => import("../home/pages/home.component.vue")
   }
 ];
 

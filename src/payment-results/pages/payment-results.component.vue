@@ -1,5 +1,4 @@
 <template>
-    
     <div class="group realtimedb">
       <div class="apartado">
         <div class="container">
@@ -246,14 +245,14 @@
       },
     },
 
-    mounted(sintereses, samorticap, TCEAFB, TCEAFN, VANFB,  VANFN){ // pedir componente de payment-schedule TCEAFB / TCEAFN / VANFB / VANFN 
+    mounted(){
       this.calcute();
-      sintereses=this.sintereses;
-      samorticap=this.samorticap;
-      TCEAFB=this.TCEAFB;
-      TCEAFN=this.TCEAFN;
-      VANFB=this.VANFB;
-      VANFN=this. VANFN;
+      this.sintereses = this.$dataTransfer.totalInterest;
+      this.samorticap = this.$dataTransfer.totalAmortization;
+      this.VANFB = this.$dataTransfer.vanB;
+      this.VANFN = this.$dataTransfer.vanN;
+      //TCEAFB=this.TCEAFB;
+      //TCEAFN=this.TCEAFN;
     }
   }
    </script>
