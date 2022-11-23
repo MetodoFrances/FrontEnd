@@ -18,7 +18,7 @@
     "json-server": "^0.17.0",
     "json-server-auth": "^2.1.0",
     "pinia": "^2.0.21",
-    "primeicons": "^5.0.0",
+    "primeicons": "^6.0.1",
     "primevue": "^3.17.0",
     "vue": "^3.2.38",
     "vue-axios": "^3.5.2",
