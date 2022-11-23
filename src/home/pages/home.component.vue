@@ -1,6 +1,6 @@
 <template>
     <div class="pdf-container">
-        <iframe :src="pdfLink" class="pdf-iframe"></iframe>
+        <a title="Logo Leasing" href="https://docs.google.com/document/d/1gus9P2s-ZNI9y_hy1V8WhF2NZjc6Jh_MF-aTbD7HczA/edit" target="_blank"><img src="../../../src/assets/logoleasing.webp" alt="Logo" /></a>
     </div>
 </template>
 
@@ -8,9 +8,28 @@
 export default {
     data() {
         return {
-            pdfLink: "../../../src/assets/Manual_Usuario_Finanzas.pdf"
+          item:{
+            url:"../../../src/assets/Manual_Usuario_Finanzas.pdf",
+            label:"Descargue el archivo aqui"
+          }
         }
+    },
+    downloadItem ({ url, label }) {
+      Axios.get(url, { responseType: 'blob' })
+          .then(response => {
+            const blob = new Blob([response.data], { type: 'application/pdf' })
+            const link = document.createElement('a')
+            link.href = URL.createObjectURL(blob)
+            link.download = label
+            link.click()
+            URL.revokeObjectURL(link.href)
+          }).catch(console.error)
+    },
+    download () {
+      const url = '../../../src/assets/Manual_Usuario_Finanzas.pdf';
+      window.location.href = url;
     }
+
 }
 </script>
 
@@ -22,4 +41,5 @@ export default {
     width: 100%;
     height: 80rem;
 }
+
 </style>
