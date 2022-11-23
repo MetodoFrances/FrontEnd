@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { ReportsApiService } from "../services/historial-reportes-home.service";
     export default {
         name: 'Historial-page',
         data() {
@@ -27,14 +27,14 @@ import axios from 'axios';
     created() {
         // this.$route.params.id;
         // this.$dataTransfer.user.id;
-        axios.get('http://localhost:3000/loans', {
-            params: {
-                user_id: this.$route.params.id
-            }
-        })
-        .then(response => {
-            this.loans = response.data;
-        })
+        const reportsApiService = new ReportsApiService();
+        reportsApiService.getLoansByUserId(this.$dataTransfer.user.id)
+            .then(response => {
+                this.loans = response.data
+            })
+            .catch(reason => {
+                console.log(reason)
+            });
     },
     mounted() {
         this.loading = true;

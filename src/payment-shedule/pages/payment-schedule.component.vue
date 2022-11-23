@@ -301,42 +301,45 @@ export default {
         });
         return;
       }
-      this.paymentScheduleApiService.getLoans().then((response) => {
-        const newLoan = {
-          loan_issue_date: new Date().toISOString().slice(0,19),
-          sale_price: this.loanDetails.salePrice,
-          loan_time: this.loanDetails.years,
-          payment_frecuency: this.loanDetails.paymentFrecuencyInDays,
-          buyback_percentage: this.loanDetails.buyBackPercentage,
-          currency_id: 1,
-          notarial_cost: this.initialCosts.notarialCosts,
-          registration_cost: this.initialCosts.registrationCosts,
+
+      const newLoan = {
+          loanIssueDate: new Date().toISOString().slice(0,19),
+          salePrice: this.loanDetails.salePrice,
+          loanTime: this.loanDetails.years,
+          TEAPercentage: this.loanDetails.TEApercentage,
+          paymentfrecuency: this.loanDetails.paymentFrecuencyInDays,
+          buyBackPercentage: this.loanDetails.buyBackPercentage,
+          currencyId: 1,
+          notarialCost: this.initialCosts.notarialCosts,
+          registrationCost: this.initialCosts.registrationCosts,
           appraisal: this.initialCosts.appraisal,
-          study_commission: this.initialCosts.studyCommission,
-          activation_commission: this.initialCosts.activationFee,
-          periodic_commission: this.periodicCosts.periodicCommission,
-          risk_insurance_percentage: this.periodicCosts.riskInsurancePercentage,
-          TEA_percetage: this.loanDetails.TEApercentage,
-          user_id: this.$dataTransfer.user.id
+          studyCommission: this.initialCosts.studyCommission,
+          activationCommission: this.initialCosts.activationFee,
+          periodicCommission: this.periodicCosts.periodicCommission,
+          riskInsurancePercentage: this.periodicCosts.riskInsurancePercentage,
+          discountRateKs: 0.015,
+          discountRateWACC: 0.015,
+          userId: this.$dataTransfer.user.id
         };
-        this.paymentScheduleApiService
-          .createLoan(newLoan)
-          .then((response) => {
-            this.$toast.add({
-              severity: "success",
-              summary: "Loan was successfuly saved",
-              detail: "You can find it in your leasing history",
-              life: 3000,
-            });
-          })
-          .catch((reason) => {
-            console.log(reason);
-            this.$toast.add({
-              severity: "error",
-              summary: "Loan could not be saved",
-              detail: "Check your network connection or try again later",
-              life: 3000,
-            });
+      console.log(newLoan);
+      this.paymentScheduleApiService
+        .createLoan(newLoan)
+        .then((response) => {
+          console.log(response.data);
+          this.$toast.add({
+            severity: "success",
+            summary: "Loan was successfuly saved",
+            detail: "You can find it in your leasing history",
+            life: 3000,
+          });
+        })
+        .catch((reason) => {
+          console.log(reason);
+          this.$toast.add({
+            severity: "error",
+            summary: "Loan could not be saved",
+            detail: "Check your network connection or try again later",
+            life: 3000,
           });
       });
     },

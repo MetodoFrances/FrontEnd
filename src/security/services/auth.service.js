@@ -2,9 +2,7 @@ import userService from "./user.service";
 class AuthService {
     login(user) {
         return userService.signIn(user).then( response => {
-            if(response.data.accessToken) {
-                localStorage.setItem("auth",JSON.stringify(response.data.user));
-            }
+            localStorage.setItem("auth",JSON.stringify(response.data));
             return response.data;
         })
     }

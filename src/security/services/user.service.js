@@ -7,7 +7,7 @@ class UserService {
         return http.post("/login",userDto);
     }
     signUp(newUserDto) {
-        return http.post(`${this._endpoint}/register`,newUserDto);
+        return http.post("/register",newUserDto);
     } 
 }
 export default new UserService();

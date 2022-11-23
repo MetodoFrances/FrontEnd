@@ -93,7 +93,7 @@ export default {
                         setTimeout(() => {
 
                         },1000);
-                        const newSettings = new Settings(null,response.user.id,"Perú","Español");
+                        const newSettings = new Settings(null,response.id,"Perú","Español");
                         this.settingsService.saveSettings(newSettings.toObjectForCreating());
                         this.goToSignIn();
                     }

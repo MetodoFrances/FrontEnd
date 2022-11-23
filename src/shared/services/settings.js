@@ -25,17 +25,17 @@ export class Settings{
 
     toObjectForCreating() {
         return {
-            user_id: this.userId,
+            languageName: this.languageName,
             country: this.country,
-            language_name: this.languageName
+            userId: this.userId
         }
     }
 
     setByObject(data) {
         this.id = data.id;
-        this.userId = data.user_id;
+        this.userId = data.userId;
         this.country = data.country;
-        this.languageName = data.language_name;
+        this.languageName = data.languageName;
     }
 
 }

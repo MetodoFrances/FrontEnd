@@ -72,6 +72,7 @@
       const user = JSON.parse(localStorage.getItem("auth"));
       this.configurationApiService.getByUserId(user.id)
       .then((response) =>  {
+        console.log(response);
         const data = response.data[0];
         this.currentSettings.setByObject(data);
         console.log(data);
