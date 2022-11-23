@@ -1,17 +1,18 @@
 <template>
     <div class="sign-in-container-left">
         <h1 class="sign-in__title">INICIO DE SESION</h1>
-        <img class="sign-in__img" src="../../assets/leasingfy-icon.png" alt="Leasingfy Icon">
         <div class="sign-in-container-input">
           <div class="sign-in__banner-img-container">
             <img class="sign-in__banner-img" src="../../assets/leasingfy-home-backround-image.png" alt="Leasingfy Background Image">
           </div>
           <form class="sign-in__form" @submit.prevent="handleSubmit(!v$.$invalid)">
+            <img class="sign-in__img" src="../../assets/leasingfy-icon.png" alt="Leasingfy Icon">
               <pv-input-text class="sign-in__input" type="text" v-model="v$.email.$model" placeholder="Correo"></pv-input-text><nav></nav>
-              <Password inputClass="sign-in__input" :feedback="false" v-model="v$.password.$model" placeholder="Contraseña"></Password>
-              <pv-button label="¿Olvidaste tu contraseña?" @click="goToRecoverPassword"/>
+              <Password inputClass="sign-in__input" :feedback="false" v-model="v$.password.$model" placeholder="Contraseña"></Password><br>
+              <pv-button label="¿Olvidaste tu contraseña?" @click="goToRecoverPassword"/><br>
               <pv-button class="sign-in__btn" label="Iniciar Sesión" type="submit"></pv-button>
-              <h2 class="sign-in__subtitle">¿No tienes una cuenta? <pv-button  class="sign-in__btn__register" label="Regístrate Aquí" @click="goToRegister"></pv-button></h2>
+              <h2 class="sign-in__subtitle">¿No tienes una cuenta? </h2>
+            <pv-button  class="sign-in__btn__register" label="Regístrate Aquí" @click="goToRegister"></pv-button>
           </form>
         </div>
     </div>
