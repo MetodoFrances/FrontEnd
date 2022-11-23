@@ -8,7 +8,7 @@
 export default {
     data() {
         return {
-            pdfLink: "../../../public/Manual_Usuario_Finanzas.pdf"
+            pdfLink: "../../../src/assets/Manual_Usuario_Finanzas.pdf"
         }
     }
 }
