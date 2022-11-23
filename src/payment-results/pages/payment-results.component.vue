@@ -133,6 +133,11 @@
 
         <div class="input-group justify-content-between">
           <div class="col">
+            <li>TIR </li>
+            <li> {{ tirN }} % </li>
+          </div>
+          <div class="linea"></div>
+          <div class="col">
             <li>TCEA Flujo Bruto </li>
             <li> {{ TCEAFB }} % </li>
           </div>
@@ -163,6 +168,7 @@
   </template>
   
   <script>
+  import { ReportsApiService } from "../services/payment-results.service";
   import{InitialCosts} from "../../shared/service/Initial-Costs.js";
   import{LoanDetails} from "../../shared/service/Loan-Details.js";
   import{PeriodicCost} from "../../shared/service/Periodic-Costs.js";
@@ -173,9 +179,10 @@
     name: "payment-results",
     data(){
       return{
-        initialCosts: new InitialCosts(250,150,80,100,50),
-        loanDetails: new LoanDetails(11800,3,30,0.12,0.01,0.030),
-        periodicCosts: new PeriodicCost(10,0.0030),
+        initialCosts: this.$dataTransfer.data[0],
+         loanDetails: this.$dataTransfer.data[2],
+         periodicCosts: this.$dataTransfer.data[1],
+      
         oportunityCosts: new OportunityCosts(),
         seguroctriesgo: null,
         leasingAmount: null,
@@ -183,13 +190,28 @@
 
         sintereses:null,
         samorticap:null,
-        TCEAFB: 15.168, // traerlo del componente de paymente
-        TCEAFN: -6.324,// traerlo del componente de paymente
-        VANFB: 318.36, // traerlo del componente de paymente
-        VANFN: 2504.49,// traerlo del componente de paymente
+        TCEAFB: null, // traerlo del componente de paymente
+        TCEAFN: null,// traerlo del componente de paymente
+        VANFB: null, // traerlo del componente de paymente
+        VANFN: null,// traerlo del componente de paymente
+        tirN:null,
 
         desembolso: null,
       }
+    },
+
+    created() {
+        // this.$route.params.id;
+        // this.$dataTransfer.user.id;
+        const reportsApiService = new ReportsApiService();
+        reportsApiService.getLoansByUserId(this.$dataTransfer.user.id)
+        
+            .then(response => {
+                this.loans = response.data
+            })
+            .catch(reason => {
+                console.log(reason)
+            });
     },
   
     methods:{
@@ -240,18 +262,23 @@
           (this.saleValue * this.loanDetails.buyBackPercentage).toFixed(2);
 
         this.desembolso=
-          (parseFloat(this.seguroctriesgo) + parseFloat(this.comisionesp) + parseFloat(this.buyback)).toFixed(2); //+this.intereses+this.amorticap falta sumar esos dos
+          (parseFloat(this.seguroctriesgo) +
+           parseFloat(this.comisionesp) + 
+           parseFloat(this.buyback)+
+           parseFloat(this.sintereses)+
+           parseFloat(this.samorticap)).toFixed(2); //+this.intereses+this.amorticap falta sumar esos dos
 
       },
     },
 
     mounted(){
-      this.calcute();
+      this.tirN= this.$dataTransfer.tirN;
       this.sintereses = this.$dataTransfer.totalInterest;
       this.samorticap = this.$dataTransfer.totalAmortization;
       this.VANFB = this.$dataTransfer.vanB;
       console.log(this.VANFB);
       this.VANFN = this.$dataTransfer.vanN;
+      this.calcute();
       //TCEAFB=this.TCEAFB;
       //TCEAFN=this.TCEAFN;
     }

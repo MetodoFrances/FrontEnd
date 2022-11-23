@@ -342,7 +342,7 @@ export default {
           salePrice: this.loanDetails.salePrice,
           loanTime: this.loanDetails.years,
           TEAPercentage: this.loanDetails.TEApercentage,
-          paymentfrecuency: this.loanDetails.paymentFrecuencyInDays,
+          paymentFrequency: this.loanDetails.paymentFrecuencyInDays,
           buyBackPercentage: this.loanDetails.buyBackPercentage,
           currencyId: 1,
           notarialCost: this.initialCosts.notarialCosts,
@@ -360,6 +360,7 @@ export default {
       this.paymentScheduleApiService
         .createLoan(newLoan)
         .then((response) => {
+          this.loan=response;
           console.log(response.data);
           this.$toast.add({
             severity: "success",
@@ -385,10 +386,12 @@ export default {
       this.$dataTransfer.data = [this.initialCosts, this.periodicCosts, this.loanDetails];
       this.$router.push({
         name: "leasing results",
-        props: { id: this.$dataTransfer.user.id }
+        props: { id: this.$dataTransfer.user.id}
       })
     },
   },
+
+  
 };
 </script>
 
