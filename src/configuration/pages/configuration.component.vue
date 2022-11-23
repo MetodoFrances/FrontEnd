@@ -27,7 +27,7 @@
 
     <div class="imagen_content">
     
-        <img class="imagenen_content__img" src="/assets/image 13.png" alt="">
+        <img class="imagenen_content__img" src="/assets/image13.png" alt="">
     </div >
 
     <div class="button">
