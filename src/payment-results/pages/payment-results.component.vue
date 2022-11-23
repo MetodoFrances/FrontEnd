@@ -250,6 +250,7 @@
       this.sintereses = this.$dataTransfer.totalInterest;
       this.samorticap = this.$dataTransfer.totalAmortization;
       this.VANFB = this.$dataTransfer.vanB;
+      console.log(this.VANFB);
       this.VANFN = this.$dataTransfer.vanN;
       //TCEAFB=this.TCEAFB;
       //TCEAFN=this.TCEAFN;

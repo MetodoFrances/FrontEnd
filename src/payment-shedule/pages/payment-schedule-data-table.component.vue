@@ -265,7 +265,7 @@ export default {
         console.log(this.approxTir);
         this.$dataTransfer.vanN = this.calculateVanN(this.TEPpercentage);
         this.$dataTransfer.tirN = this.calculateTIRN();
-        this.$dataTransfer.vanB = this.calculateVanB();
+        this.$dataTransfer.vanB = this.calculateVanB(this.TEPpercentage);
         this.$dataTransfer.tirB = this.calculateTIRB();
         this.$dataTransfer.totalInterest = parseFloat(this.totalInterest.toFixed(2));
         this.$dataTransfer.totalAmortization = parseFloat(this.totalAmortization.toFixed(2));

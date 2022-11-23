@@ -182,6 +182,36 @@
         ></pv-input-text>
       </div>
       <div class="inputsContainer__content">
+        <label
+          v-if="graceType"
+          for="paymentFrecuencyInDays"
+          class="label"
+          >Grace type</label
+        >
+        <pv-dropdown
+          v-model="graceType"
+          :options="graceTypeOptions"
+          optionLabel="name"
+          placeholder="Select grace Type"
+        ></pv-dropdown>
+      </div>
+      <div class="inputsContainer__content">
+        <label
+          v-if="graceTypePeriods"
+          for="graceTypePeriods"
+          class="label"
+          >Grace Periods</label
+        >
+        <pv-input-text
+          id="graceTypePeriods"
+          type="number"
+          v-model="graceTypePeriods"
+          placeHolder="Grace Periods"
+          min="1"
+          step="1"
+        ></pv-input-text>
+      </div>
+      <div class="inputsContainer__content">
         <label 
           v-if="periodicCosts.riskInsurancePercentage"
           for="riskInsurancePercentage"
@@ -223,7 +253,7 @@
       :periodicCosts="periodicCosts"
       :loanDetails="loanDetails"
       :opportunityCosts="opportunityCosts"
-      :graceType="graceType"
+      :graceType="graceType.name"
       :graceTypePeriods="graceTypePeriods"
     ></PaymentScheduleDataTableComponent>
   </div>
@@ -249,16 +279,21 @@ export default {
       periodicCosts: new PeriodicCosts(null, null),
       loanDetails: new LoanDetails(null, null, null, null, null, null),
       opportunityCosts: new OpportunityCosts(),
-      graceType: "None",
-      graceTypePeriods: 0,
+      graceType: null,
+      graceTypePeriods: null,
       displayable: false,
       paymentScheduleApiService: new PaymentScheduleApiService(),
       paymentFrecuencyOptions: [
-        { name: "15", code: 30},
+        { name: "15", code: 15},
         { name: "30", code: 30},
-        { name: "120", code: 30},
-        { name: "180", code: 30},
-        { name: "360", code: 30}
+        { name: "120", code: 120},
+        { name: "180", code: 180},
+        { name: "360", code: 360}
+      ],
+      graceTypeOptions: [
+        { name: "None", code: "None"},
+        { name: "Partial", code: "Partial"},
+        { name: "Total", code: "Total" }
       ]
     };
   },

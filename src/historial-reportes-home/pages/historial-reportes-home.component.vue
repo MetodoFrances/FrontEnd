@@ -57,26 +57,26 @@ import { ReportsApiService } from "../services/historial-reportes-home.service";
                     lazyNode.children = [
                         {
                             data: {
-                                name: 'Fecha de creación: ' + this.loans[node.key].loan_issue_date,
+                                name: 'Fecha de creación: ' + this.loans[node.key].loanIssueDate,
                             },
                         },
                         {
                             data: {
-                                name: 'Precio de venta: S/' + this.loans[node.key].sale_price,
+                                name: 'Precio de venta: S/' + this.loans[node.key].salePrice,
                             }
                         },
                         {
                             data: {
-                                name: 'Número de cuotas: ' + (360/this.loans[node.key].payment_frecuency)*this.loans[node.key].loan_time,
+                                name: 'Número de cuotas: ' + (360/this.loans[node.key].paymentFrequency)*this.loans[node.key].loanTime,
                             }
                         },
                         {
                             data: {
-                                name: 'Duración: ' + this.loans[node.key].loan_time,
+                                name: 'Duración: ' + this.loans[node.key].loanTime,
                             }
                         }
                     ];
-
+                    console.log(this.loans[node.key].paymentFrequency);
                     let nodes = this.nodes.map(n => {
                         if (n.key === node.key) {
                             n = lazyNode;
@@ -106,7 +106,7 @@ import { ReportsApiService } from "../services/historial-reportes-home.service";
                 let node = {
                     key: (first + i),
                     data: {
-                        name: 'Identificador: ' + this.loans[i].loan_name
+                        name: "Leasing"
                     },
                     leaf: false
                 };
