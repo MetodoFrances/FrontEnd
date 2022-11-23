@@ -1,5 +1,20 @@
 {
-    "results": [
-        
+    "loans": [
+      {
+        "loan_issue_date": "2022-10-30T01:28:48",
+        "sale_price": 11796,
+        "loan_time": 3,
+        "payment_frecuency": 30,
+        "buyback_percentage": 0.05,
+        "currency_id": 1,
+        "notarial_cost": 120.5,
+        "registration_cost": 120,
+        "appraisal": 50,
+        "study_commission": 70,
+        "activation_commission": 50,
+        "periodic_commission": 46.7,
+        "risk_insurance_percentage": 0.02,
+        "id": 1
+      }
     ]
-}
+  } 

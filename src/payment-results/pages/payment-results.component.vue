@@ -15,7 +15,7 @@
         <div class="input-group ">
           <div class="col">
             <li> I.G.V. </li>
-            <li> {{ IGV }} </li>
+            <li> {{ igv }} </li>
           </div>
           
           <div class="linea"></div>
@@ -164,23 +164,29 @@
   </template>
   
   <script>
-  import{InitialCosts} from "../../shared/service/Initial-Costs.js";
-  import{LoanDetails} from "../../shared/service/Loan-Details.js";
-  import{PeriodicCost} from "../../shared/service/Periodic-Costs.js";
-  import{OportunityCosts} from "../../shared/service/Oportunity-Costs";
-  //import PaymentScheduleDataTableComponent from "./payment-schedule-data-table.component.vue";
+  import{InitialCosts} from "../../shared/services/Initial-Costs.js";
+  import{LoanDetails} from "../../shared/services/Loan-Details.js";
+  import{PeriodicCosts} from "../../shared/services/Periodic-Costs.js";
+  import{OpportunityCosts} from "../../shared/services/Opportunity-Costs";
+  import PaymentScheduleComponent from "./payment-schedule.component.vue";
+  import PaymentScheduleDataTableComponent from "./payment-schedule-data-table.component.vue";
 
   export default{
     name: "payment-results",
+    components:{
+      PaymentScheduleComponent,
+      PaymentScheduleDataTableComponent,
+    },
     data(){
       return{
-        initialCosts: new InitialCosts(250,150,80,100,50),
-        loanDetails: new LoanDetails(11800,3,30,0.12,0.01,0.030),
-        periodicCosts: new PeriodicCost(10,0.0030),
-        oportunityCosts: new OportunityCosts(),
+       
+        initialCosts: new InitialCosts(null, null, null, null, null),
+        periodicCosts: new PeriodicCosts(null, null),
+        loanDetails: new LoanDetails(null, null, null, null, null, null),
+        opportunityCosts: new OpportunityCosts(),
         seguroctriesgo: null,
         leasingAmount: null,
-        IGV: null,
+        igv: null,
 
         sintereses:null,
         samorticap:null,
@@ -190,15 +196,17 @@
         VANFN: 2504.49,// traerlo del componente de paymente
 
         desembolso: null,
+
+       
       }
     },
   
     methods:{
       //paymentscheduledata esto es jalarlo desde el compomente de payment.
       calcute(){
-        this.IGV =
-          ((this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
-          this.loanDetails.IGVpercentage).toFixed(2);
+        this.igv = this.PaymentScheduleDataTableComponent.IGV,
+        //  ((this.loanDetails.salePrice / (1.0 + this.loanDetails.IGVpercentage)) *
+        //  this.loanDetails.IGVpercentage).toFixed(2);
         
         //paymentscheduledata
         this.saleValue = (this.loanDetails.salePrice - this.IGV).toFixed(2);
@@ -246,8 +254,9 @@
       },
     },
 
-    mounted(sintereses, samorticap, TCEAFB, TCEAFN, VANFB,  VANFN){ // pedir componente de payment-schedule TCEAFB / TCEAFN / VANFB / VANFN 
+    mounted(TEA, sintereses, samorticap, TCEAFB, TCEAFN, VANFB,  VANFN){ // pedir componente de payment-schedule TCEAFB / TCEAFN / VANFB / VANFN 
       this.calcute();
+      
       sintereses=this.sintereses;
       samorticap=this.samorticap;
       TCEAFB=this.TCEAFB;
