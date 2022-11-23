@@ -8,6 +8,9 @@ class UserService {
     }
     signUp(newUserDto) {
         return http.post("/register",newUserDto);
-    } 
+    }
+    getUser(userid){
+        return http.get("/login",userid);
+    }
 }
 export default new UserService();
